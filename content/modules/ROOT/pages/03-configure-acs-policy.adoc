@@ -1,0 +1,134 @@
+== Red Hat Advanced Cluster Security (ACS) and Cosign Integration
+
+=== Deepening Security Layers
+
+In the context of ever-evolving cyber threats, integrating Advanced Cluster Security (ACS) with Cosign in our OpenShift environment signifies a strategic enhancement in our security posture. We'll examine how this integration offers not just an additional verification layer for our container images but also a more robust, holistic defense mechanism. By aligning ACS with Cosign, we ensure that every container image deployed in our system is doubly checked for its security and compliance, aligning perfectly with our stringent security mandates.
+
+=== Configuring ACS for Image Signature Verification
+
+==== Creating the Cosign Secret
+
+. On your ssh terminal, run the following command to create a secret called signing-secrets in the openshift-pipelines namespace which Chains will use to sign your images:
++
+[source, role="execute"]
+----
+COSIGN_PASSWORD=openshift cosign generate-key-pair k8s://openshift-pipelines/signing-secrets
+----
+. Along with generating a secret, the above command also creates a *cosign.pub* file in our home diretory.  This key is used for image signature verification.  Print the public key:
++
+[source, role="execute"]
+----
+cat cosign.pub
+----
+Take note of the key as you will need it to copy it later to configure a Signature Integration in RHACS.
+
+==== Configure ACS Policy
+
+. Go to the {acs_route}[RHACS Console,window=read-later] and log in with your credentials username: *{acs_portal_username}* and password: *{acs_portal_password}*.
+image:rhacs-login.png[]
++
+. On the left menu, select *Platform Configuration > Integrations*
++
+image:rhacs_integrations.png[]
+. On the *Integrations* screen, select *Signature Integrations*
++
+image::rhacs-signature-integration.png[]
+. On the *Signature Integrations*, click the button *New integration*
+.. For *Integration name* enter *cosign*
+.. Expand the *Cosign* field and select *Add new public key*
+.. For *Public key name* enter *cosign.pub*
+.. For *Public key value* copy the public key from the terminal and paste it in this field.  This is used by RHACS to verify your image signatures.  Ensure you copy the entire contents of the file i.e.
++
+[source,textinfo]
+----
+*-----BEGIN PUBLIC KEY-----*
+...
+*-----END PUBLIC KEY-----*
+----
+. Click save
++
+image::rhacs-signature-integration-entry.png[]
++
+. For convenience, we have already set up a policy in ACS called *0-Trusted Signature Policy* that checks an image for a valid signature.  This policy is enforced during the below lifecycle stages:
+.. Build  - Runs when doing a roxctl image check on an image.  This will trigger a violation if the image passed to the command is not signed with our signature.
+.. Deployment - Will prevent deployments to Openshift if images are not signed with our signature
++
+This policy is currently disabled.
++
+. On the left menu, select *Platform Configuration > Policy Management*
++
+image::rhacs-policy-management.png[]
++
+. The policy you are looking for is called *0-Trusted Signature Policy*.  It should be at the top of the list.
++
+image::rhacs-policy-management-list.png[]
+. Click the ellipse at the end and select *Edit policy*.
++
+image::rhacs-policy-actions-popup.png[]
++
+. Select *Policy criteria* and then click the *Select* button.
++
+image::rhacs-policy-criteria-select.png[]
++
+. Select the cosign signature integration and click save.
++
+image::rhacs-policy-criteria-trusted-image-signers.png[]
++
+. Continue clicking next at the bottom until you finally save the policy.
+. Now that the policy is updated, we want to enable it.  Click the ellipse again for the same policy and select *Enable policy*
++
+image::rhacs-policy-actions-popup.png[]
+
+==== Trigger the Pipeline
+
+. Login to {codeserver_url}[Code Server,window=read-later] with password *{codeserver_password}*
+. On the left side of the screen, under *IDE (WORKSPACE)*, you will find the *globex-ui* source code project.  Expand the *src* folder and click on *index.html*.
++
+image::cs-globex-src-index-html.png[]
+. On line *19* modify the *center* html element value from *Globex Online* to *Globex Update*
+. From the top menu, click *File > Save*
++
+image::cs-globex-src-save-1.png[]
+. Click the source control icon on the left side of the screen
+. Notice that the *index.html* file is shown under the *Changes* section.  Click the *+* sign to the right of the file name.
+This will add the file to the Git staging area.
+. Next enter some text in the *Commit* text box, such as *globex udpate 1*, and click *Commit*.
+This saves your changes to the local repository.
+. Next click the *Sync Changes* button to push your change to the remote repository.
+. Switch back to *Openshift* and click *Pipelines > Pipelines* from the left menu.  Ensure that your project is set to *ci*.
+. Notice that a new instance of your pipeline run has started.
++
+image::ocp-pipeline-run-2.png[]
+Your pipeline should complete in a *Failed* state.
++
+image::ocp-pipeline-run-2-fail.png[]
+
+==== Examine pipeline
+. Click on the pipeline run to examine the reason for the error.
+. Your pipeline has failed as the Red Hat ACS policy *01-Trusted Signature Policy* is enabled and has detected that the image your pipeline has built is not signed with the private key you generated with *Cosign*.
++
+image::ocp-pipeline-run-2-error.png[]
+
+==== Deploy an Untrusted Image
+
+. Run the below command on your terminal
++
+[source, bash]
+----
+oc new-app https://github.com/openshift/ruby-hello-world.git#beta4 -n globex
+----
++
+. Observe the output of this command.  Notice that the admission controller has prevented you from creating this application as the image being deployed violates the *0-Trusted Signature Policy*.  Creating a depoyment with an untrusted image directly on Openshift will also be prevented along with a similar warning showing up on the *Events* tab.
++
+[source, bash]
+----
+Policy: 0-Trusted Signature Policy
+- Description:
+    ↳
+- Rationale:
+    ↳
+- Remediation:
+    ↳
+- Violations:
+    - Container 'ruby-hello-world' image signature is unverified
+----

@@ -1,0 +1,5 @@
+== Learning References
+
+* link:https://www.redhat.com/en/blog/red-hat-openshift-and-sigstore[Red Hat OpenShift and Sigstore]: A comprehensive blog by Tyrell and I explaining the integration of OpenShift with Cosign.
+* link:https://docs.openshift.com/pipelines/1.12/secure/using-tekton-chains-for-openshift-pipelines-supply-chain-security.html[Using Tekton Chains for OpenShift Pipelines Supply Chain Security]: Detailed documentation on implementing and understanding Tekton Chains within OpenShift.
+* link:https://docs.openshift.com/acs/4.2/operating/verify-image-signatures.html[ACS Integration Guide]: A guide on integrating ACS with Cosign for enhanced container image verification.

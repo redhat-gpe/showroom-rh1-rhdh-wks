@@ -1,0 +1,10 @@
+== Workshop Overview - {lab_name}
+
+Through this workshop, we aim to equip you with both the strategic understanding and the technical know-how to navigate and mitigate sophisticated cybersecurity threats. Our focus on Cosign, Tekton Chains, and their integration within existing systems like Advanced Cluster Security (ACS) and OpenShift, is about more than building a robust defense. It's about setting new standards in container image security and integrity.
+
+Let's embark on this enlightening journey to safeguard our digital assets against the ever-evolving threats of the cyber world.
+
+=== Lab Access
+
+The terminal window to your right is *already* logged into the lab environment as the `{ssh_user}` user via `ssh`.
+All steps of this lab are to be completed as the `{ssh_user}` user.

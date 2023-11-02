@@ -1,0 +1,13 @@
+* xref:00-agenda.adoc[1. Agenda]
+
+* xref:01-introduction.adoc[2. Workshop Introduction]
+
+* xref:02-pipeline-overview.adoc[3. An Overview of your Pipeline]
+
+* xref:03-configure-acs-policy.adoc[4. Configuring ACS for Image Signatures Verification]
+
+* xref:04-install-chains.adoc[5. Installing Tekton Chains for Image Signing]
+
+* xref:05-resolve-deployment.adoc[6. Challenge: Resolve Deployment Issues]
+
+* xref:06-learning-references.adoc[7. Learning References]
