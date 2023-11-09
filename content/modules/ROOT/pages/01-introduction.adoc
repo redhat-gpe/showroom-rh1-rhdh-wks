@@ -1,9 +1,19 @@
-== Introduction and Challenge Overview
+== A Day in the Life of a Developer
 
-=== Current Security Challenges
+=== Navigating the Maze
 
-At Globex Retail Store, amidst the intricacies of container orchestration, we faced a dire security challenge. Sophisticated external attackers, alongside a rogue internal element, engaged in "typosquatting" by subtly altering deployment manifests. They introduced malicious container images that closely mimicked our trusted ones. For instance, our legitimate image globex/nginx:latest was deviously cloned as globex/ngnix:latest. These deceptive, nearly identical names posed a severe threat to the integrity and security of our network. This alarming development made it crystal clear: we urgently needed a solid defense mechanism to protect against both internal and external threats of typosquatting in deployment updates.
+Imagine you've just joined a new organization as a developer, excited and eager to make your mark. Your enthusiasm, however, is quickly dampened by the reality of disjointed systems and scattered information. You're assigned to update a service, but locating the relevant repository and documentation becomes a time-consuming challenge due to poor organization and outdated references.
+Setting up your local development environment doesn't fare much better, with fragmented instructions that don't match the current technology stack. Slack messages with conflicting guidance add to the confusion, leading to a slow and frustrating start.
 
-=== Embracing a Solution with Cosign and Tekton Chains
+By the end of the day, you've managed a meager commit, your initial excitement replaced with a sense of frustration. This isn't the developer experience you signed up for. It's clear that without a unified system to streamline these processes, your talents are underutilized, bogged down by the very infrastructure that's supposed to support your work.
 
-To combat this insidious form of cyber warfare, we turned to an innovative and powerful duo: Cosign for digitally signing container images and Tekton Chains for fortifying the integrity of our OpenShift Pipelines. Our workshop today focuses on understanding these tools and integrating them into our workflows to bolster our defenses against such devious attacks.
+'''
+
+=== Charting the Course with Internal Developer Portals
+
+The unified system we longed for in the first section is known in tech parlance as an Internal Developer Portal (IDP). IDPs play a pivotal role in modern development environments by offering developers a centtralized interface for accessing the organization's technology stack, including services,websites, data pipelines, and more. By centralizing these resources, IDPs eliminate the need for developers to search for information or traverse a labyrinth of disconnected systems, addressing many of the challenges highlighted in the introduction.
+
+A well-implemented Internal Development Platform approach offers “opinionated and supported” routes called Golden Paths for developers to create software components. In his blog Designing Golden Paths, Raffaele Spazzoli explains that the general notion behind this concept is that the platform offers some form of pre-architected and supported approaches to building and deploying a particular piece of software. If a team can “stay” in the path, then they get a supported road to production without having to learn all the details of the technology used to create that road.
+
+'''
+

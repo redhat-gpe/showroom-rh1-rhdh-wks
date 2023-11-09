@@ -6,7 +6,7 @@
 
 * xref:03-configure-acs-policy.adoc[4. Configuring ACS for Image Signatures Verification]
 
-* xref:04-install-chains.adoc[5. Installing Tekton Chains for Image Signing]
+* xref:04-golden_path_templates.adoc[5. A Day in the Life of a Developer with RHDH]
 
 * xref:05-resolve-deployment.adoc[6. Challenge: Resolve Deployment Issues]
 

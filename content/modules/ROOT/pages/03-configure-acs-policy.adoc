@@ -1,6 +1,32 @@
-== Red Hat Advanced Cluster Security (ACS) and Cosign Integration
+== RHDH Landing Page Harbor Tour 
 
-=== Deepening Security Layers
+=== Login to Red Hat Developer Hub (RHDH)
+
+Click on the Red Hat Developer Hub (RHDH) link provided on the workshop home page. Authenticating to RHDH  involves four quick steps:
+
+. The link:https://www.keycloak.org/[Keycloak] plugin operates in the background to authenticate you. Our *Platform Engineering* team has set up *Keycloak* to use *GitLab* as the identity provider. Once you are prompted to authenticate, click on the GitLab button at the bottom of the screen.
++
+
+image::Login_Keycloak.png[]
+
+. You'll be redirected to the *GitLab login page*. Enter the *GitLab* credentials provided on the workshop home page and click the *Sign in* button.
++
+
+image::Gitlab_Authentication.png[]
+
+. Click the *Authorize* button to allow Keycloak to use your Gitlab account.
++
+
+image::Authorize_Keycloak.png[]
+
+. You'll be redirected back to *KeyCloak*. Here, complete the sign-in by using your Red Hat email. Keep other fields at their default and click the *Submit* button.
+
+image::KeyCloak_Complete_Sign-in.png[]
+
+Post-authentication, you'll land on the *RHDH Landing Page*.
+
+
+=== Login to RHDH
 
 In the context of ever-evolving cyber threats, integrating Advanced Cluster Security (ACS) with Cosign in our OpenShift environment signifies a strategic enhancement in our security posture. We'll examine how this integration offers not just an additional verification layer for our container images but also a more robust, holistic defense mechanism. By aligning ACS with Cosign, we ensure that every container image deployed in our system is doubly checked for its security and compliance, aligning perfectly with our stringent security mandates.
 

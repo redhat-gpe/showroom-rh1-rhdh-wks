@@ -1,0 +1,164 @@
+== A Day in the Life of a Developer with RHDH
+
+In the first section of this workshop, we explained some common challenges that developers face: navigating through disorganized systems and dealing with incomplete or outdated documentation. Now, let's explore how the Red Hat Developer Hub can transform this frustrating experience into a positive one.
+
+As a new developer, you are asked to join a project and implement a modification to a feature within a Quarkus-based service. To do that you are going to use a pre-configured Golden Path Template, which is going to streamline your onboarding process to your new project and perform the following in a self service manner:
+
+. RHDH is going to prepare your development workspace in OpenShift Dev Spaces.
+. The source code for your application will be published directly to your new workspace.
+. Your application will be deployed on OpenShift.
+. CI pipelines will be set up to build your application.
+. ArgoCD will be deployed and configured to handle GitOps operations.
+
+And this entire process is governed by your organization's security and compliance policies.
+
+'''
+
+=== Launching your first Golden Path Template (GPT)
+
+To launch the Golden Path Template, click on *Create* in the sidebar menu. You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you. Right now we have only one template, but we could have as many as we need. Click the *Choose* link on the bottom right of the “Securing a Quarkus Service Software Supply Chain“ tile to select this template.  
+
+image::Choose_GPT.png[]
+
+Next, you'll be prompted to fill out a straightforward form with basic information. Unlike a classic ticket system, this wizard-style interface is intuitive and tailored specifically for this project, ensuring a quick and straightforward process. At a later step in the workshop you'll discover the ease and flexibility of designing similar forms with the RHDH Templating Engine. Keep the default values in the first form and click *NEXT STEP* to proceed.
+
+image::GPT_form_1.png[]
+
+In the second form, choose *Quay* from the *Image Registry* dropdown. 
+
+image::GPT_form_2.png[]
+
+This action automatically populates relevant default values, including the Quay server host, the organization for your container image repositories, and the tag for your base image. Keep the default values and click *NEXT STEP* to proceed.
+
+image::GPT_form2_update.png[]
+
+In the third and final form, you'll see pre-filled default values for the Git server hosting your application's source code repository, the repository containing the GitOps manifests, and the GitLab group for these repositories. Again keep the default values and click *NEXT STEP* to proceed.
+
+image::GPT_form_3.png[]
+
+You will be presented with a summary. You can now review that everything is in order then click the *Create* button.
+
+image::GPT_Summary.png[]
+
+After clicking the *Create* button, Red Hat Developer Hub will utilize the information you've provided to initiate the setup process as outlined in the selected Golden Path Template. It will also register your application in the *Catalog*. Now, proceed by clicking the *Open Component in catalog* link.
+
+image::GPT_Complete.png[]
+
+'''
+
+=== Exploring the RHDH Dashboard
+
+On clicking the *Open Component in catalog*,  the *RHDH Dashboard* will launch in a new tab. Here you have everything you need to work on your task and implement that new feature in the Quarkus application. Let’s take a moment to explore the Overview tab.
+
+. The *Links* panel: Gives you access to your Cloud Developmenet Environment link:https://developers.redhat.com/products/openshift-dev-spaces/overview[Red Hat OpenShift Dev Spaces]. You can choose your preferred IDE, either Microsoft Visual Studio Code or JetBrains IntelliJ IDEA. 
++
+. The *Merge request statistics* panel offers insights into your GitLab merge requests.
++
+. The *About* panel: Allows direct access to your application's source code that was just created for you in *GitLab* via the *View Source* link and to the application documentation through the *View TechDocs* link.
++
+. The *ArgoCD overview* panel displays the current status of your application in *ArgoCD*.
+
+
+Let’s start by creating the workspace for your application by clicking on the *OpenShift Dev Spaces (VScode)* link.
+
+
+
+image::RHDH_Dashboard.png[]
+
+This will launch the login process in a new tab. To login into *OpenShift Dev Spaces*,follow these step:
+
+. Choose to *login with OpenShift*
++
+. Select *login with rhsso*
++
+. Then enter your OpenShift credentials
++
+. Authorize *OpenShift Dev Spaces* to access your account by clicking the *Allow selected permissions* button.
++
+. You'll then be prompted to sign into *GitLab*. Click the *Sign in* button to proceed.
++
+. Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button. 
+
+Once logged in, *OpenShift Dev Spaces* will automatically locate the *Devfile* in your *GitLab* repository and begin processing it to create your workspace.
+
+While *OpenShift Dev Spaces* is setting up your workspace, let's take this opportunity to further explore the *RHDH Dashboard*. Return to the *RHDH Dashboard* tab in your browser and look for the *Dependencies* option in the top menu. If *Dependencies* isn't immediately visible, use the navigation arrows to scroll left through the menu options until you find it.
+
+image::Dependencies_Tab.png[]
+
+'''
+
+=== The Dependencies View
+
+The *Dependencies* view allows you to inspect your application’s relationships and dependencies. Red Hat Developer Hub models your application into a software graph that showcases the relationships between components, APIs, owners, and dependencies. This powerful feature enables developers to quickly find the assets they need and understand the impact of changes across the entire ecosystem.
+
+image::Dependencis_View.png[]
+
+==== RHDH’s System Model
+In RHDH’s terminology, assets are referred to as *Entities*. The most commonly used entities are core and organizational entities. Let's break them down:
+
+===== Core Entities
+
+* *Component*: Represents a software piece within your system, such as a backend service or data pipeline.
+* *API*: Represents a formalized interface like a REST API, GraphQL endpoint, or gRPC service. APIs can be provided or consumed by components, and their visibility can be controlled as public, private, or restricted (available only to specific system entities).
+* *Resource*: Represents a piece of infrastructure or external service that a component depends on, such as a database or an S3 bucket.
+* All these entities, working together to perform a function, can be logically grouped into a *System*.
+
+===== Organizational Entities
+
+* *User*: Represents an individual user within your organization.
+* *Group*: Represents a team or other organizational units that users are members of.
+
+These organizational entities own the core entities and play a crucial role in maintaining and managing them.
+
+image::System_Model.png[]
+
+Now that we have a better grasp of the terminology, let's examine the relationship diagram for our Quarkus application. The diagram illustrates a component named *my-quarkus-app*, which provides an API also named *my-quarkus-app* and is under the ownership of *user1*. Should there be dependencies on databases, external storage solutions like S3 buckets, or other components, these would be depicted within this diagram as well.
+
+image::My-quarkus-app-diagram.png[]
+
+Now let’s explore the *my-quarkus-app* API by clicking on it in the relationship diagram.
+
+'''
+
+=== The API View
+
+In the API view, you'll find a lot of helpful information including access to source code, documentation, and a visual representation of relationships from the API's perspective.  To interact with your API, select the *Definition* tab. 
+
+image::API_View.png[]
+
+Here you'll find a Swagger UI, which provides an interactive interface for exploring and testing your API's requests.
+
+image::Swagger_UI.png[]
+
+Switch back to the “Overview” tab, and under owner click on the link corresponding to your user, which in our example is labeled as *user1*.
+
+image::Switch_To_Owner_View.png[]
+
+'''
+
+=== The Ownership View
+
+As we discussed in the workshop introduction, it is often very hard to understand who owns which component. However, RHDH simplifies this by clearly displaying the group responsible for the component and APIs you're working with, complete with contact details. You can also view all related components and APIs managed by this group.
+So really the Red Hat Developer Hub makes it very easy to find and explore every aspect of your application from within the comfort of your RHDH dashboard.
+
+Now, let's navigate back to our application component. Click on the link labeled “1 SERVICE Component” to return to the RHDH Software Catalog.
+
+image::Ownership_view.png[]
+
+Select the *my-quarkus-app* component from the list to navigate back to your Dashboard.
+
+image::Catalog_View_From_Ownership_Link.png[]
+
+'''
+
+=== The Topology View
+
+Select the *Topology* tab from the upper menu. This view, powered by an RHDH Plugin, brings the familiar *OpenShift Topology* view experience into the *Red Hat Developer Hub*, allowing you to visualize the workloads within your Kubernetes namespace.
+
+Immediately, you'll notice a red ring around your Pod, indicating a startup issue. Hover over the Pod to reveal an *ErrImagePull* error. Click on the Pod for a detailed view, similar to what you would find in *OpenShift's Topology* view. Switch to the Resources tab for further details, the error message makes it clear that the application Pod failed to start due to a missing image. To confirm this, let's proceed to the *Image Registry* view by selecting it from the upper menu.
+
+image::Topology_View.png[]
+
+'''
+
+=== The Image Registry View
