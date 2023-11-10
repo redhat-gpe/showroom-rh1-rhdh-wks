@@ -2,12 +2,8 @@
 
 * xref:01-introduction.adoc[2. Workshop Introduction]
 
-* xref:02-pipeline-overview.adoc[3. An Overview of your Pipeline]
+* xref:02-rhdh_harbor_tour.adoc[3. RHDH Landing Page Harbor Tour]
 
-* xref:03-configure-acs-policy.adoc[4. Configuring ACS for Image Signatures Verification]
+* xref:03-golden_path_templates.adoc[4. A Day in the Life of a Developer with RHDH]
 
-* xref:04-golden_path_templates.adoc[5. A Day in the Life of a Developer with RHDH]
-
-* xref:05-resolve-deployment.adoc[6. Challenge: Resolve Deployment Issues]
-
-* xref:06-learning-references.adoc[7. Learning References]
+* xref:04-bonus_lab.adoc[5. Crafting your first Golden Path Template]

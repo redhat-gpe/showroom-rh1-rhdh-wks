@@ -10,7 +10,7 @@ asciidoc:
     page-pagination: true
     experimental:
     numbered:
-    lab_name: "From Development to Deployment: Securing The Software Supply Chain with Red Hat OpenShift"
+    lab_name: "Redefining Developer Efficiency: Supercharge Developer Experience on Openshift with Red Hat Developer Hub"
     guid: my-guid
     ssh_user: devops
     ssh_password: devops

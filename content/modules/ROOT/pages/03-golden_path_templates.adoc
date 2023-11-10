@@ -81,9 +81,37 @@ This will launch the login process in a new tab. To login into *OpenShift Dev Sp
 
 Once logged in, *OpenShift Dev Spaces* will automatically locate the *Devfile* in your *GitLab* repository and begin processing it to create your workspace.
 
-While *OpenShift Dev Spaces* is setting up your workspace, let's take this opportunity to further explore the *RHDH Dashboard*. Return to the *RHDH Dashboard* tab in your browser and look for the *Dependencies* option in the top menu. If *Dependencies* isn't immediately visible, use the navigation arrows to scroll left through the menu options until you find it.
+While *OpenShift Dev Spaces* is setting up your workspace, let's take this opportunity to further explore the *RHDH Dashboard*. Return to the *RHDH Dashboard* tab in your browser and select the *View TechDocs* link in the *About* card.
+
+NOTE: You can also access the Documentation from by selecting Docs from the upper menu.
+
+image::TechDocs_Link.png[]
+
+'''
+
+=== TechDocs
+
+Here's the documentation available for the application you're tasked with. Oh dear, It seems the documentation could be more comprehensive. Let's flag this for the team's attention
+
+image::View_TechDocs.png[]
+
+To do so, highlight the text 'A cool Quarkus app.' A small popup will appear with the option *Open GitLab Issue.*
+
+image::Create_Issue.png[]
+
+When creating the issue, you can replace the text ‘replace this line with your comment’ with the following feedback: 'The current details are quite sparse, please enrich the documentation.’. Then click the *Create issue* button.
+
+image::Provide_Issue_Details.png[]
+
+Navigate to the Issues tab by selecting it from the upper menu. The issue you've raised is now visible and can be tracked by all developers collaborating on the project. 
+
+image::Issues_View.png[]
+
+
+It's time to examine how RHDH has modeled our application in the Software Catalog. Look for the *Dependencies* option in the top menu. If *Dependencies* isn't immediately visible, use the navigation arrows to scroll left through the menu options until you find it.
 
 image::Dependencies_Tab.png[]
+
 
 '''
 

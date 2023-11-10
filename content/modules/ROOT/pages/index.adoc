@@ -4,7 +4,3 @@ Through this workshop, we aim to equip you with both the strategic understanding
 
 Let's embark on this enlightening journey to safeguard our digital assets against the ever-evolving threats of the cyber world.
 
-=== Lab Access
-
-The terminal window to your right is *already* logged into the lab environment as the `{ssh_user}` user via `ssh`.
-All steps of this lab are to be completed as the `{ssh_user}` user.

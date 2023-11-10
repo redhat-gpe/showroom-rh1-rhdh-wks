@@ -1,5 +1,0 @@
-= Pipeline Overview
-
-. Login to {openshift_console_url}[Openshift,window=read-later] with username {openshift_cluster_admin_username} and password {openshift_cluster_admin_password}.
-. Click on *Pipelines > Pipelines* from the left menu.  Ensure that your project is set to *ci*.
-. Click on *app-globex-ui-pipeline*

@@ -1,4 +1,4 @@
-= From Development to Deployment: Securing The Software Supply Chain with Red Hat OpenShift
+= {lab_name}
 :toc:
 :toc-placement: preamble
 :sectnums:
