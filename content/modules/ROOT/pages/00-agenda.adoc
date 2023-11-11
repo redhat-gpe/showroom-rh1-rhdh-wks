@@ -9,9 +9,9 @@
 *Recap of the current security challenges with similar-looking malicious container images.*
 *Overview of how these challenges led us to embrace Cosign and Tekton Chains.*
 
-== Deep Dive into Cosign and Sigstore
+== Red Hat Developer Hub Core Features
 
-*Exploration of Cosign as part of the Sigstore project, focusing on its role in securing container images through cryptographic signing.*
+*A comprehensive overview of the Red Hat Developer Hub, highlighting its key features like the Catalog, documentation, search capabilities all aimed at enhancing developer experience and efficiency.*
 
 == Understanding Tekton Chains in OpenShift Pipelines
 

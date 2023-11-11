@@ -117,30 +117,11 @@ image::Dependencies_Tab.png[]
 
 === The Dependencies View
 
-The *Dependencies* view allows you to inspect your application’s relationships and dependencies. Red Hat Developer Hub models your application into a software graph that showcases the relationships between components, APIs, owners, and dependencies. This powerful feature enables developers to quickly find the assets they need and understand the impact of changes across the entire ecosystem.
+The *Dependencies* view allows you to inspect your application’s relationships and dependencies as we explained in the previous section.
 
 image::Dependencis_View.png[]
 
-==== RHDH’s System Model
-In RHDH’s terminology, assets are referred to as *Entities*. The most commonly used entities are core and organizational entities. Let's break them down:
-
-===== Core Entities
-
-* *Component*: Represents a software piece within your system, such as a backend service or data pipeline.
-* *API*: Represents a formalized interface like a REST API, GraphQL endpoint, or gRPC service. APIs can be provided or consumed by components, and their visibility can be controlled as public, private, or restricted (available only to specific system entities).
-* *Resource*: Represents a piece of infrastructure or external service that a component depends on, such as a database or an S3 bucket.
-* All these entities, working together to perform a function, can be logically grouped into a *System*.
-
-===== Organizational Entities
-
-* *User*: Represents an individual user within your organization.
-* *Group*: Represents a team or other organizational units that users are members of.
-
-These organizational entities own the core entities and play a crucial role in maintaining and managing them.
-
-image::System_Model.png[]
-
-Now that we have a better grasp of the terminology, let's examine the relationship diagram for our Quarkus application. The diagram illustrates a component named *my-quarkus-app*, which provides an API also named *my-quarkus-app* and is under the ownership of *user1*. Should there be dependencies on databases, external storage solutions like S3 buckets, or other components, these would be depicted within this diagram as well.
+Here we can quickly understand that we have a component called *my-quarkus-app* that provides an API with the same name and as owned by the group named *user1* in this example.
 
 image::My-quarkus-app-diagram.png[]
 

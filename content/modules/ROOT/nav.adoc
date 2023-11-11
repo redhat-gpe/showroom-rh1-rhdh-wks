@@ -2,7 +2,7 @@
 
 * xref:01-introduction.adoc[2. Workshop Introduction]
 
-* xref:02-rhdh_harbor_tour.adoc[3. RHDH Landing Page Harbor Tour]
+* xref:02-rhdh_core_features.adoc[3. Red Hat Developer Hub Core Features]
 
 * xref:03-golden_path_templates.adoc[4. A Day in the Life of a Developer with RHDH]
 
