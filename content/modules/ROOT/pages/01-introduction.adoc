@@ -1,6 +1,8 @@
-== A Day in the Life of a Developer
+== Introdction
 
-=== Navigating the Maze
+Step into the world of the Red Hat Developer Hub (RHDH), where the future of cloud-native development unfolds. This workshop offers a deep dive into the capabilities of RHDH and how it revolutionizes the developer's journey from code to production.
+
+=== A Day in the Life of a Developer
 
 Imagine you've just joined a new organization as a developer, excited and eager to make your mark. Your enthusiasm, however, is quickly dampened by the reality of disjointed systems and scattered information. You're assigned to update a service, but locating the relevant repository and documentation becomes a time-consuming challenge due to poor organization and outdated references.
 Setting up your local development environment doesn't fare much better, with fragmented instructions that don't match the current technology stack. Slack messages with conflicting guidance add to the confusion, leading to a slow and frustrating start.
@@ -15,7 +17,11 @@ The unified system we longed for in the first section is known in tech parlance 
 
 A well-implemented Internal Development Platform approach offers opinionated and supported routes called Golden Paths for developers to create software components. In his blog link:https://cloud.redhat.com/blog/designing-golden-paths[Designing Golden Paths], Raffaele Spazzoli explains that the general notion behind this concept is that the platform offers some form of pre-architected and supported approaches to building and deploying a particular piece of software. If a team can “stay” in the path, then they get a supported road to production without having to learn all the details of the technology used to create that road.
 
-The open-source link:https://www.backstage.io[Backstage] framework, created by Spotify, has emerged as a powerful solution for constructing developer platforms. By consolidating all the essential capabilities for building, testing, and deploying software into a single pane of glass, Backstage empowers developers to work with greater efficiency and productivity. 
+The open-source link:https://www.backstage.io[Backstage] framework, created by Spotify, has emerged as a powerful solution for constructing developer platforms. By consolidating all the essential capabilities for building, testing, and deploying software into a single pane of glass, Backstage empowers developers to work with greater efficiency and productivity.
+
+'''
+
+=== Red Hat Developer Hub (RHDH) enters the stage
 
 link:https://developers.redhat.com/rhdh[Red Hat Developer Hub] (RHDH), is Red Hat’s enterprise-grade open developer platform for building developer portals based on the upstream Backstage project. RHDH comes fully equipped with an array of capabilities and tools. These are meticulously curated based on Red Hat's vision and industry best practices. Our aim is to significantly reduce cognitive load for developers, eliminate developer frustration, and substantially enhance productivity. By doing so, RHDH empowers organizations to gain a competitive edge in today's fast-paced market. In the upcoming sections, we'll delve into the capabilities of RHDH, showcasing how it can effectively tackle the development hurdles we've outlined earlier.
 

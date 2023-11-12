@@ -6,26 +6,16 @@
 
 == A Day in the Life of a Developer
 
-*Recap of the current security challenges with similar-looking malicious container images.*
-*Overview of how these challenges led us to embrace Cosign and Tekton Chains.*
+*Navigating Development Complexities: Explore the critical challenges confronting today's developers and learn how Internal Developer Portals (IDPs) offer effective solutions.*
 
 == Red Hat Developer Hub Core Features
 
 *A comprehensive overview of the Red Hat Developer Hub, highlighting its key features like the Catalog, documentation, search capabilities all aimed at enhancing developer experience and efficiency.*
 
-== Understanding Tekton Chains in OpenShift Pipelines
+== A Day in the Life of a Developer with RHDH
 
-*Detailed analysis of how Tekton Chains, as a Kubernetes CRD controller, enhances the supply chain security in our Red Hat OpenShift Pipelines.*
-*Discussion on the automatic signing of task runs, the use of advanced attestation formats like in-toto, and the importance of secure storage for artifacts.*
-
-== Advanced Cluster Security (ACS) and Cosign Integration
-
-*Insight into how ACS's integration with Cosign provides additional layers of security and verification for container images in OpenShift.*
-
-== Hands-On Session: Implementing Cosign and Tekton Chains
-
-*Participants will learn to set up Cosign for signing container images and see how Tekton Chains can automate these signatures within OpenShift Pipelines.*
+*Discover the effectiveness of Golden Path Templates in RHDH for optimizing developer workflows. Understand how these templates simplify and guide project setups, enhancing overall productivity.*
 
 == Challenge Lab
 
-*A practical, scenario-based exercise focusing on applying these concepts in real-world-like simulations, emphasizing problem-solving in image verification and efficient resource provisioning within OpenShift deployments.*
+*Challenge yourslef in this labe where you will learn how to craft your first Golden Path Template.*
