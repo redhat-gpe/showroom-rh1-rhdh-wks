@@ -10,7 +10,7 @@ asciidoc:
     page-pagination: true
     experimental:
     numbered:
-    lab_name: "Redefining Developer Efficiency: Supercharge Developer Experience on Openshift with Red Hat Developer Hub"
+    lab_name: "Supercharge Developer Experience: Openshift & Red Hat Developer Hub Workshop"
     guid: my-guid
     ssh_user: devops
     ssh_password: devops
