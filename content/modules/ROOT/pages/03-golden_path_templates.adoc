@@ -1,12 +1,12 @@
 == A Day in the Life of a Developer with RHDH
 
-In the first section of this workshop, we explained some common challenges that developers face: navigating through disorganized systems and dealing with incomplete or outdated documentation. Now, let's explore how the Red Hat Developer Hub can transform that frustrating experience into a positive one. 
+In the first section of this workshop, we explained some common challenges that developers face: navigating through disorganized systems and dealing with incomplete or outdated documentation. Now, let's explore how the Red Hat Developer Hub can transform that frustrating experience into a positive one.
 
 === Golden Path Templates
 
 One of the primary use cases for Red Hat Developer Hub is to streamline the onboarding of new team members and promote golden paths, offering a guided approach to building components in a self-service manner. The templating engine in RHDH, called Scaffolder, enables the execution of golden path templates that initialize repositories with skeleton code and predefined settings.  A software template is defined in a YAML file, specifying the parameters and steps to execute.
 
-Within each step, built-in actions are leveraged to perform various tasks. These actions handle the heavy lifting for you, such as creating a workspace, generating application skeletons, pushing to GitHub, or even triggering your CI/CD pipeline. 
+Within each step, built-in actions are leveraged to perform various tasks. These actions handle the heavy lifting for you, such as creating a workspace, generating application skeletons, pushing to GitHub, or even triggering your CI/CD pipeline.
 
 When the Scaffolder parses the template, it generates input forms in its UI based on the specified parameters, and then proceeds to execute the steps outlined in the template. This seamless process helps developers create new components with ease and ensures adherence to best practices within the organization.
 
@@ -24,9 +24,9 @@ As a new developer, you are asked to join a project and implement a modification
 
 image::GPT_Flow.png[]
 
-TIP: Feel free tp explore both repositories by accessing the link:https://gitlab-gitlab.apps.cluster-677l9.sandbox2418.opentlc.com/development/my-quarkus-app[Source Code Repo] and the link:https://gitlab-gitlab.apps.cluster-677l9.sandbox2418.opentlc.com/development/my-quarkus-app-gitops[GitOps Manifests Repo]
+TIP: Feel free tp explore both repositories by accessing the link:https://gitlab-gitlab.apps.cluster-677l9.sandbox2418.opentlc.com/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:https://gitlab-gitlab.apps.cluster-677l9.sandbox2418.opentlc.com/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
 
-To launch the Golden Path Template, click on *Create* in the sidebar menu. You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you. Right now we have only one template, but we could have as many as we need. Click the *Choose* link on the bottom right of the “Securing a Quarkus Service Software Supply Chain“ tile to select this template.  
+To launch the Golden Path Template, click on *Create* in the sidebar menu. You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you. Right now we have only one template, but we could have as many as we need. Click the *Choose* link on the bottom right of the “Securing a Quarkus Service Software Supply Chain“ tile to select this template.
 
 image::Choose_GPT.png[]
 
@@ -34,7 +34,7 @@ Next, you'll be prompted to fill out a straightforward form with basic informati
 
 image::GPT_form_1.png[]
 
-In the second form, choose *Quay* from the *Image Registry* dropdown. 
+In the second form, choose *Quay* from the *Image Registry* dropdown.
 
 image::GPT_form_2.png[]
 
@@ -64,7 +64,7 @@ On clicking the *Open Component in catalog*,  the *RHDH Dashboard* will launch i
 
 The *Overview* tab displays a few tiles sucah as:
 
-. The *Links* tile: Gives you access to your Cloud Developmenet Environment link:https://developers.redhat.com/products/openshift-dev-spaces/overview[Red Hat OpenShift Dev Spaces]. You can choose your preferred IDE, either Microsoft Visual Studio Code or JetBrains IntelliJ IDEA. 
+. The *Links* tile: Gives you access to your Cloud Developmenet Environment link:https://developers.redhat.com/products/openshift-dev-spaces/overview[Red Hat OpenShift Dev Spaces,window=_blank]. You can choose your preferred IDE, either Microsoft Visual Studio Code or JetBrains IntelliJ IDEA.
 . The *Merge request statistics* tile offers insights into your GitLab merge requests.
 . The *About* tile: Allows direct access to your application's source code that was just created for you in *GitLab* via the *View Source* link and to the application documentation through the *View TechDocs* link.
 . The *ArgoCD overview* tile displays the current status of your application in *ArgoCD* (This may take a few minutes to sync and display the application status.).
@@ -88,7 +88,7 @@ This will launch the login process in a new tab. To login into *OpenShift Dev Sp
 +
 . You'll then be prompted to sign into *GitLab*. Click the *Sign in* button to proceed.
 +
-. Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button. 
+. Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button.
 
 Once logged in, *OpenShift Dev Spaces* will automatically locate the *Devfile* in your *GitLab* repository and begin processing it to create your workspace.
 
@@ -117,7 +117,7 @@ This will open a new tab in your browser to allow you to creeate an issue in Git
 
 image::Provide_Issue_Details.png[]
 
-Switch back to the *my-quarkus-app Dashboard* tab in your browser. Then navigate to the *Issues* tab by selecting it from the upper menu. The issue you've raised is now visible and can be tracked by all developers collaborating on the project. 
+Switch back to the *my-quarkus-app Dashboard* tab in your browser. Then navigate to the *Issues* tab by selecting it from the upper menu. The issue you've raised is now visible and can be tracked by all developers collaborating on the project.
 
 image::Issues_View.png[]
 
@@ -145,7 +145,7 @@ Now let’s explore the *my-quarkus-app* API by clicking on it in the relationsh
 
 ==== API tab
 
-In the API view, you'll find a lot of helpful information including access to source code, documentation, and a visual representation of relationships from the API's perspective.  To interact with your API, select the *Definition* tab. 
+In the API view, you'll find a lot of helpful information including access to source code, documentation, and a visual representation of relationships from the API's perspective.  To interact with your API, select the *Definition* tab.
 
 image::API_View.png[]
 
@@ -217,7 +217,7 @@ Finally, let's update the Documentation with our latest changes. Expand the *doc
 
 image::Index_File.png[]
 
-Enter the commit message “My First Commit” and then click on the *Commit* button. In the pop-up window that follows, click *Yes* to stage your changes. Finally, click on the *Sync Changes* button and in the pop-up the follows clikc *OK* to oush your changes and complete the process. You have now successfully implemented your change and updated the documentation in one commit. 
+Enter the commit message “My First Commit” and then click on the *Commit* button. In the pop-up window that follows, click *Yes* to stage your changes. Finally, click on the *Sync Changes* button and in the pop-up the follows clikc *OK* to oush your changes and complete the process. You have now successfully implemented your change and updated the documentation in one commit.
 
 That commit should have triggered the build pipeline for the *my-quarkus-app* component through the event trigger. Switch back to *RHDH Dashboard* tab in your browser and select the *CI* tab from the top menu.
 
@@ -255,7 +255,7 @@ Next, switch to the Overview tab. Here, you will notice that the application is 
 
 image::ArgoCD_Healthy_Status.png[]
 
-Then, move to the Image Registry tab. The Registry should now be populated with images. Click on the *Scan Results* for the image tagged as *latest* to teview it's scan results. 
+Then, move to the Image Registry tab. The Registry should now be populated with images. Click on the *Scan Results* for the image tagged as *latest* to teview it's scan results.
 
 
 image::Scanned_Image_In_Quay.png[]

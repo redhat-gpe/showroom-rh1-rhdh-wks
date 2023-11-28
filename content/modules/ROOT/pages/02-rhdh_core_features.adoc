@@ -4,7 +4,7 @@
 
 Click on the Red Hat Developer Hub (RHDH) link provided on the workshop home page. Authenticating to RHDH  involves four quick steps:
 
-. The link:https://www.keycloak.org/[Keycloak] plugin operates in the background to authenticate you. Our *Platform Engineering* team has set up *Keycloak* to use *GitLab* as the identity provider. Once you are prompted to authenticate, click on the GitLab button at the bottom of the screen.
+. The link:https://www.keycloak.org/[Keycloak,window=_blank] plugin operates in the background to authenticate you. Our *Platform Engineering* team has set up *Keycloak* to use *GitLab* as the identity provider. Once you are prompted to authenticate, click on the GitLab button at the bottom of the screen.
 +
 
 image::Login_Keycloak.png[]
@@ -33,7 +33,7 @@ The Landing Page of the Red Hat Developer Hub serves as your primary portal to a
 
 To provide you with a hands-on experience of RHDH's capabilities, we have registered a dummy application called *rh-one* within the Hub. This will allow you to get a better understanding of its features. In the next section, we will demonstrate a Golden Path Template in action. You'll see firsthand how it seamlessly creates various components on your behalf, streamlining your development process.
 
-Let's embark on a guided tour of the Landing Page's capabilities, where you'll discover how RHDH simplifies and enhances the development experience. 
+Let's embark on a guided tour of the Landing Page's capabilities, where you'll discover how RHDH simplifies and enhances the development experience.
 
 '''
 
@@ -58,11 +58,11 @@ To better understand this diagram, let's adjust a few filter conditions:
 
 . In the *Relations* section, deselect both *ownerof* and *ownedby* options.
 +
-. From the *Direction* dropdown, choose *Top to Bottom*. 
+. From the *Direction* dropdown, choose *Top to Bottom*.
 +
-. In the *Curve* dropdown, select *Monotone X*. 
+. In the *Curve* dropdown, select *Monotone X*.
 +
-. Toggle off the Simplified option. 
+. Toggle off the Simplified option.
 +
 . Finally, turn on the *Merge Relations* toggle.
 
@@ -90,15 +90,15 @@ image::System_Model.png[]
 
 Now that we have a better grasp of the terminology, let's examine the relationship diagram of our *RH-One* applicaition. The diagram shows that all components, APIs and resources are part of the *rh-one-system*.  The component named *rh-one-backend* provides an API named *events_api*, and it relies on two dependencies:
 
-. A database called *rh_one_database* 
+. A database called *rh_one_database*
 +
-. An S3 bucket called *events_S3* 
+. An S3 bucket called *events_S3*
 
 The other component named *rh-one-frontend* consumes the *events-api*. So you can immediately identify that any modifications made to the events-api will directly impact the *rh-one-frontend* component. This is how the relationship graph helps you as a developer in considering the broader system implications when planning changes to any single component.
 
 image::Relations_Graph.png[]
 
-NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application by cheking out the file link:https://gitlab-gitlab.apps.cluster-6wsjz.sandbox773.opentlc.com/rhdh/rh1-software-templates/blob/main/catalogs.yaml[catalogs.yaml] in your *Gitlab* rep.
+NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application by cheking out the file link:https://gitlab-gitlab.apps.cluster-6wsjz.sandbox773.opentlc.com/rhdh/rh1-software-templates/blob/main/catalogs.yaml[catalogs.yaml,window=_blank] in your *Gitlab* rep.
 
 '''
 
@@ -114,10 +114,10 @@ image::events_api.png[]
 
 In traditional setups, documentation often resides in separate systems, detached from the codebase. This disjointed approach requires developers to update two distinct systems whenever changes are made to a component, leading to inefficiencies and potential inconsistencies.
 
-Instead, RHDH embraces the concept of 'documentation-as-code'. In this model, documentation is stored right alongside the code, but in a separate directory. This means that as a developer, you can seamlessly create new features, modify your code, update your documentation, and commit all these changes to your repository in a single, unified action. 
+Instead, RHDH embraces the concept of 'documentation-as-code'. In this model, documentation is stored right alongside the code, but in a separate directory. This means that as a developer, you can seamlessly create new features, modify your code, update your documentation, and commit all these changes to your repository in a single, unified action.
 
 WARNING: Documentation has not been setup for the *rh-one* dummy application. You will see TechDocs in action in the next section.
- 
+
 '''
 
 ==== Search
@@ -139,7 +139,7 @@ image::Learning_Paths.png[]
 
 ==== Clusters
 
-The *Clusters* view offers detailed insights into our managed clusters. In this example, you can observe the OpenShift cluster that is currently hosting our workshop is running on AWS, utilizing OpenShift version 4.12, and running across 6 nodes. 
+The *Clusters* view offers detailed insights into our managed clusters. In this example, you can observe the OpenShift cluster that is currently hosting our workshop is running on AWS, utilizing OpenShift version 4.12, and running across 6 nodes.
 
 image::Cluster_View.png[]
 
