@@ -129,7 +129,7 @@ image::Search_Results.png[]
 
 '''
 
-==== Learing Path
+==== Learning Path
 
 Learning Paths serve as a valuable tool for organizations to curate and link to external educational resources, thereby facilitating skill development and learning for developers. In our current example, we have established a series of Learning Paths utilizing Red Hat’s extensive resources. It's important to note that the content and structure of these Learning Paths can be customized and will vary according to the unique needs and objectives of each customer.
 
