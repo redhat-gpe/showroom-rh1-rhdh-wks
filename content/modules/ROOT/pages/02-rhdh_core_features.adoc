@@ -1,8 +1,51 @@
 == Red Hat Developer Hub Core Features
 
+=== What is Red Hat Developer Hub (RHDH)?
+
+* Red Hat Developer Hub is Red Hat’s enterprise-grade open developer platform for building link:https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/[Internal Developer Portals] (IDPs) based on the upstream link:https://www.backstage.io[Backstage] project. 
+* IDPs play a pivotal role in modern development environments by offering developers a centtralized interface for accessing the organization's technology stack, eliminating the need for developers to search for information or traverse a labyrinth of disconnected systems.
+* RHDH is equipped with an array of capabilities and tools meticulously curated based on Red Hat's vision and industry best practices to offer our customers a powerful opinionated and supported IDP.
+
+
+'''
+
+=== RHDH Core Capablties
+
+RHDH offers five core capabilities
+
+. *The Software Catalog*: A centralized directory, listing all services, libraries, and documentation making it very simple for developers to find the component they need.
+. TechDocs:  Facilitates easy access to up-to-date documentation for all software components, supports documentation-as-code philosophy, allowing documentation to live alongside code.
+. Search: This allows developers to find information across the entire Backstage ecosystem.
+Enables quick and efficient location of services, documentation, and other resources.
+. Software templates: Streamlines the process of setting up new projects, services, or libraries.
+Ensures consistency and best practices across all new development efforts.
+. Plugins: Modular extensions that add new features or integrate with external tools and services.
+
+image::RHDH_Core_Capablties.png[]
+
+=== RHDH Plugins: How They Work and Why They Matter
+
+* Plugins are the heart and soul of the Red Hat Developer Hub (RHDH), crucial for its extensibility.
+* RHDH utilizes two types of plugins, Backend and Frontend.
+* Backend Plugins integrate RHDH with external systems (like source control and CI/CD tools), driving the core logic for various features of RHDH. 
+* Frontend Plugins interpret and display data from Backend plugins, offering a user-friendly interface for seamless interaction with RHDH features.
+* Red Hat offers a wide spectrum of certified and supported link:https://developers.redhat.com/products/plugins-for-backstage/overview[plugins]
+
+image::RHDH_Plugins.png[]
+
+'''
+
+
+
 === Login to Red Hat Developer Hub (RHDH)
 
-Click on the Red Hat Developer Hub (RHDH) link provided on the workshop home page. Authenticating to RHDH  involves four quick steps:
+Login to the RHDH using the following details:
+
+* RHDH URL: {devspaces_url}
+* User: {devspaces_user}
+* Password: {devspaces_user_password}
+
+Click on the Red Hat Developer Hub (RHDH) link provided on the workshop home page. Authenticating to RHDH involves four quick steps:
 
 . The link:https://www.keycloak.org/[Keycloak,window=_blank] plugin operates in the background to authenticate you. Our *Platform Engineering* team has set up *Keycloak* to use *GitLab* as the identity provider. Once you are prompted to authenticate, click on the GitLab button at the bottom of the screen.
 +
@@ -155,14 +198,6 @@ image::Cluster_Details.png[]
 
 image::Tech_Radar.png[]
 
-
-'''
-
-=== Plugins
-
-Plugins are the heart and soul of the Red Hat Developer Hub (RHDH), offering extensive extensibility through a diverse range of plugins that enhance its functionality. Many of the features we've discussed, such as the Catalog and Search, are implemented as plugins. Backend plugins provide crucial server-side functionality, managing data processing, integrations, and interactions with databases and other backend services. These plugins are the powerhouse behind the core logic and computations that drive various RHDH features. On the other hand, frontend plugins focus on the user interface and experience. They display data and functionality in a user-friendly manner, enabling developers to interact seamlessly with the platform's features.
-
-image::RHDH_Plugins.png[]
 
 '''
 
