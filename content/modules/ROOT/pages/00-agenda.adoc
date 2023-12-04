@@ -12,10 +12,10 @@
 
 *A comprehensive overview of the Red Hat Developer Hub, highlighting its key features like the Catalog, documentation, search capabilities all aimed at enhancing developer experience and efficiency.*
 
-== A Day in the Life of a Developer with RHDH
+== How Golden Path Templates Simplify the Developer Experience
 
 *Discover the effectiveness of Golden Path Templates in RHDH for optimizing developer workflows. Understand how these templates simplify and guide project setups, enhancing overall productivity.*
 
 == Challenge Lab
 
-*Challenge yourslef in this labe where you will learn how to craft your first Golden Path Template.*
+*Challenge yourself in this labe where you will learn how to craft your first Golden Path Template.*

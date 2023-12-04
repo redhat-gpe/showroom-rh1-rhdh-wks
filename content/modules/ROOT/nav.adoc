@@ -4,6 +4,6 @@
 
 * xref:02-rhdh_core_features.adoc[3. Red Hat Developer Hub Core Features]
 
-* xref:03-golden_path_templates.adoc[4. A Day in the Life of a Developer with RHDH]
+* xref:03-golden_path_templates.adoc[4. How Golden Path Templates Simplify the Developer Experience]
 
 * xref:04-bonus_lab.adoc[5. Crafting your first Golden Path Template]

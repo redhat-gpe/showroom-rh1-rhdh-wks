@@ -1,6 +1,6 @@
 == Workshop Overview - {lab_name}
 
-Through this workshop, we aim to equip you with both the strategic understanding and the technical know-how to navigate and mitigate sophisticated cybersecurity threats. Our focus on Cosign, Tekton Chains, and their integration within existing systems like Advanced Cluster Security (ACS) and OpenShift, is about more than building a robust defense. It's about setting new standards in container image security and integrity.
+Through this workshop, we delve into the transformative capabilities of the Red Hat Developer Hub (RHDH). This workshop is designed to provide you with a comprehensive understanding and hands-on experience of how RHDH revolutionizes cloud-native development. From exploring the innovative features of RHDH, including its powerful Golden Path Templates, to practical demonstrations of its application in real-world scenarios, we're set to guide you through the nuances of modern software development. 
 
-Let's embark on this enlightening journey to safeguard our digital assets against the ever-evolving threats of the cyber world.
+Join us in this journey to master the art of efficient, streamlined development practices that RHDH offers, setting new benchmarks in the realm of developer experience and productivity.
 
