@@ -1,6 +1,6 @@
 == How Golden Paths Templates Simplify Developer Experience
 
-* In the first section of this workshop, we explained some common challenges that developers face: navigating through disorganized systems and dealing with incomplete or outdated documentation. 
+* In the first section of this workshop, we explained some common challenges that developers face: navigating through disorganized systems and dealing with incomplete or outdated documentation.
 * Now, let's explore how the Golden Path Templates can transform that frustrating experience into a positive one.
 
 '''
@@ -8,12 +8,12 @@
 === How Do Golden Path Templates Transform the Developer Experience?
 
 * One of the primary use cases for *Red Hat Developer Hub* is to streamline the onboarding of new team members leveraging *Golden Path Templates*.
-* These templates offer guided, self-service approaches to building components. 
+* These templates offer guided, self-service approaches to building components.
 * A *Golden Path Template* is defined using a YAML file, which outlines the necessary parameters and steps for execution.
 * The *Scaffolder*, *RHDH*'s templating engine, facilitates the execution of these steps as defined in the *YAML* file.
 * Each step utilizes built-in *Actions* to perform various tasks, such as creating workspaces, generating application skeletons, pushing changes to *GitLab*, or triggering CI/CD pipelines.
 * When the *Scaffolder* processes a template, it generates input forms, rendered based on the parameters specified in the template.
-* It then proceeds to execute the steps outlined in the template. 
+* It then proceeds to execute the steps outlined in the template.
 * *Golden Path Templates* help developers create new components with ease, and in a self-service manner, while ensuring compliance with organizational best practices.
 
 In the next section, we will guide you through the process of executing your first *Golden Path Template*.
@@ -33,17 +33,17 @@ In the next section, we will guide you through the process of executing your fir
 
 image::GPT_Flow.png[]
 
-TIP: Feel free tp explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo]
+TIP: Feel free tp explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
 
-* To launch the *Golden Path Template*, click on *Create* in the sidebar menu. 
-* You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you. 
-* Right now we have only one template, but we could have as many as we need. 
+* To launch the *Golden Path Template*, click on *Create* in the sidebar menu.
+* You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you.
+* Right now we have only one template, but we could have as many as we need.
 * Click the *Choose* link on the bottom right of the “Securing a Quarkus Service Software Supply Chain“ tile to select this template.
 
 image::Choose_GPT.png[]
 
-* Next, you'll be prompted to fill out a simple form with basic information. 
-* Unlike a classic ticket system, this wizard-style interface is intuitive and tailored specifically for this project, ensuring a quick and straightforward process. 
+* Next, you'll be prompted to fill out a simple form with basic information.
+* Unlike a classic ticket system, this wizard-style interface is intuitive and tailored specifically for this project, ensuring a quick and straightforward process.
 * Keep the default values in the first form and click *NEXT STEP* to proceed.
 
 image::GPT_form_1.png[]
@@ -52,7 +52,7 @@ image::GPT_form_1.png[]
 
 image::GPT_form_2.png[]
 
-* This action automatically populates relevant default values, including the Quay server host, the organization for your container image repositories, and the tag for your base image. 
+* This action automatically populates relevant default values, including the Quay server host, the organization for your container image repositories, and the tag for your base image.
 * Keep the default values and click *NEXT STEP* to proceed.
 
 image::GPT_form2_update.png[]
@@ -62,12 +62,12 @@ image::GPT_form2_update.png[]
 
 image::GPT_form_3.png[]
 
-* You will be presented with a summary. 
+* You will be presented with a summary.
 * You can now review that everything is in order then click the *Create* button.
 
 image::GPT_Summary.png[]
 
-* After clicking the *Create* button, Red Hat Developer Hub will utilize the information you've provided to initiate the setup process as outlined in the selected Golden Path Template. 
+* After clicking the *Create* button, Red Hat Developer Hub will utilize the information you've provided to initiate the setup process as outlined in the selected Golden Path Template.
 * It will also register your application in the *Catalog*.
 * Now, proceed by clicking the *Open Component in catalog* link.
 
@@ -77,8 +77,8 @@ image::GPT_Complete.png[]
 
 === Exploring the RHDH Dashboard
 
-* On clicking the *Open Component in catalog*,  the *RHDH Dashboard* will launch in a new tab. 
-* Here you have everything you need to work on your task and implement that new feature in the Quarkus application. 
+* On clicking the *Open Component in catalog*,  the *RHDH Dashboard* will launch in a new tab.
+* Here you have everything you need to work on your task and implement that new feature in the Quarkus application.
 * Let’s take a moment to explore the different tabs available starting with the *Overview* tab.
 
 '''
@@ -107,7 +107,7 @@ image::RHDH_Dashboard.png[]
 
 * Once logged in, *OpenShift Dev Spaces* will automatically locate the *Devfile* in your *GitLab* repository and begin processing it to create your workspace.
 
-* While *OpenShift Dev Spaces* is setting up your workspace, let's take this opportunity to further explore the *RHDH Dashboard*. 
+* While *OpenShift Dev Spaces* is setting up your workspace, let's take this opportunity to further explore the *RHDH Dashboard*.
 * Return to the *Overview* tab in your browser and select the *View TechDocs* link in the *About* tile.
 
 NOTE: You can also access the Documentation from by selecting Docs from the upper menu.
@@ -118,14 +118,14 @@ image::TechDocs_Link.png[]
 
 === Docs tab
 
-* Here you can see the technical documentation for the *my-quarkus-app* component. 
-* *RHDH* follows a **doc-like-code* approach as explained in the previous section. 
-* The documentation is written in *Markdown* format and hosted in the same Git repository as the component source code. 
+* Here you can see the technical documentation for the *my-quarkus-app* component.
+* *RHDH* follows a **doc-like-code* approach as explained in the previous section.
+* The documentation is written in *Markdown* format and hosted in the same Git repository as the component source code.
 * The *Docs* tab displays the documentation in *HTML* format, which has been generated and published as part of the execution of our *Golden Path Template*.
 
 image::View_TechDocs.png[]
 
-* You can also open any documentation related issue directly from the *Docs* tab. 
+* You can also open any documentation related issue directly from the *Docs* tab.
 * For example, we are not impressed by the level of detail provided in this document.
 * Let's flag this for the team's attention.
 * To do so, highlight the text 'A cool Quarkus app.'
@@ -134,20 +134,20 @@ image::View_TechDocs.png[]
 
 image::Create_Issue.png[]
 
-* This will open a new tab in your browser to allow you to create an issue in *Gitlab*. 
-* When creating the issue, you can replace the text ‘replace this line with your comment’ with the following feedback: 'The current details are quite sparse, please enrich the documentation.’. 
+* This will open a new tab in your browser to allow you to create an issue in *Gitlab*.
+* When creating the issue, you can replace the text ‘replace this line with your comment’ with the following feedback: 'The current details are quite sparse, please enrich the documentation.’.
 * Then click the *Create issue* button.
 
 image::Provide_Issue_Details.png[]
 
-* Switch back to the *my-quarkus-app Dashboard* tab in your browser. 
-* Then navigate to the *Issues* tab by selecting it from the upper menu. 
+* Switch back to the *my-quarkus-app Dashboard* tab in your browser.
+* Then navigate to the *Issues* tab by selecting it from the upper menu.
 * The issue you've raised is now visible and can be tracked by all developers collaborating on the project.
 
 image::Issues_View.png[]
 
 * It's time to examine how *RHDH* has modeled our application in the Software Catalog.
-* Look for the *Dependencies* option in the top menu. 
+* Look for the *Dependencies* option in the top menu.
 * If *Dependencies* isn't immediately visible, use the navigation arrows to scroll left through the menu options until you find it.
 
 image::Dependencies_Tab.png[]
@@ -172,7 +172,7 @@ image::My-quarkus-app-diagram.png[]
 
 === API tab
 
-* In the *API* view, you'll find a lot of helpful information including access to source code, documentation, and a visual representation of relationships from the API's perspective.  
+* In the *API* view, you'll find a lot of helpful information including access to source code, documentation, and a visual representation of relationships from the API's perspective.
 * To interact with your API, select the *Definition* tab.
 
 image::API_View.png[]
@@ -189,7 +189,7 @@ image::Switch_To_Owner_View.png[]
 
 === Ownership tab
 
-* As we discussed in the workshop introduction, it is often very hard to understand who owns which component. 
+* As we discussed in the workshop introduction, it is often very hard to understand who owns which component.
 * However, *RHDH* simplifies this by clearly displaying the group responsible for the component and APIs you're working with, complete with contact details. You can also view all related components and APIs managed by this group.
 * So really *Red Hat Developer Hub* makes it very easy to find and explore every aspect of your application from within the comfort of your *RHDH dashboard*.
 * Now, let's navigate back to our application component.
@@ -205,12 +205,12 @@ image::Catalog_View_From_Ownership_Link.png[]
 
 === Topology tab
 
-* Select the *Topology* tab from the upper menu. 
+* Select the *Topology* tab from the upper menu.
 * This view, powered by an *RHDH Plugin*, brings the familiar *OpenShift Topology* view experience into the *Red Hat Developer Hub*, allowing you to visualize the workloads within your Kubernetes namespace.
 * Immediately, you'll notice a red ring around your *Pod*, indicating a startup issue.
-* Hover over the Pod to reveal an *ErrImagePull* error. 
-* When you click on the Pod, a side pane slides in from the right to show more details. 
-* Switch to the *Resources* tab, the error message makes it clear that the application Pod failed to start due to a missing image. 
+* Hover over the Pod to reveal an *ErrImagePull* error.
+* When you click on the Pod, a side pane slides in from the right to show more details.
+* Switch to the *Resources* tab, the error message makes it clear that the application Pod failed to start due to a missing image.
 * To confirm this, let's proceed to the *Image Registry* view by selecting it from the upper menu.
 
 image::Topology_View.png[]
@@ -219,8 +219,8 @@ image::Topology_View.png[]
 
 === Image Registry tab
 
-* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Qua*y hosted registry. 
-* As we anticipated, the *Image Registry* is currently empty. 
+* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Qua*y hosted registry.
+* As we anticipated, the *Image Registry* is currently empty.
 * To address this, let's switch back to the browser tab where you logged-in *Red Hat OpenShift Dev Spaces* at the beginning of this section.
 
 image::Image_Registry_Tab.png[]
@@ -229,7 +229,7 @@ image::Image_Registry_Tab.png[]
 
 === Implementing a code change in OpenShift Dev Spaces
 
-* Your IDE should now be loaded and ready in a browser tab. 
+* Your IDE should now be loaded and ready in a browser tab.
 * Click on the *Yes, I Trust the Authors* button to proceed.
 
 image::Dev_Spaces_Trust_Authors.png[]
@@ -242,7 +242,7 @@ image::Dev_Spaces_Trust_Authors.png[]
 
 NOTE: In case you are wondering, the JUnit test for the Hello method needs to be updated otherwise the *Build* step in our CI/CD pipeline will fail due to the discrepancy between the code and its test.
 
-* In your *my-quarkus-app* workspace, expand the folders *src -> main -> java*, and then open the file *ExampleResource.java*. 
+* In your *my-quarkus-app* workspace, expand the folders *src -> main -> java*, and then open the file *ExampleResource.java*.
 * On line 14, replace the return message of the hello method from "Hello RESTEasy" to “Hello from RHDH”.
 
 image::Modify_ExampleResource.png[]
@@ -253,7 +253,7 @@ image::Modify_ExampleResource.png[]
 
 image::Modify_ExampleResourceTest.png[]
 
-* Finally, let's update the Documentation with our latest changes. 
+* Finally, let's update the Documentation with our latest changes.
 * Expand the *docs* folder and open the file *Index.md*.
 * At the end of the document, add the following text: "Release 1.0: Update to ExampleResource.hello() method to return 'Hello from RHDH'.".
 * Now, click on the *Source Control* icon in the left menu.
@@ -265,7 +265,7 @@ image::Index_File.png[]
 * Finally, click on the *Sync Changes* button and in the pop-up the follows click *OK* to push your changes and complete the process.
 * You have now successfully implemented your change and updated the documentation in one commit.
 
-* That commit should have triggered the build pipeline for the *my-quarkus-app* component through the event trigger. 
+* That commit should have triggered the build pipeline for the *my-quarkus-app* component through the event trigger.
 * Switch back to *RHDH Dashboard* tab in your browser and select the *CI* tab from the top menu.
 
 image::My_First_Commit.png[]
@@ -274,8 +274,8 @@ image::My_First_Commit.png[]
 
 === CI tab
 
-* The *CI* tab enables you to track the progress of the build pipeline for the my_quarkus_app component. 
-* Notice how security measures are baked into the build pipeline, adhering to the policies set by the security team. 
+* The *CI* tab enables you to track the progress of the build pipeline for the my_quarkus_app component.
+* Notice how security measures are baked into the build pipeline, adhering to the policies set by the security team.
 * These measures include:
 
 . Static code analysis using *Sonarqube*.
@@ -284,9 +284,9 @@ image::My_First_Commit.png[]
 . Integration with *ACS* (Advanced Cluster Security) to scan the image for any vulnerabilities.
 
 * As a developer, you don't need to worry about these complex aspects.
-* They are all prepared for you through the Golden Path approach, ensuring a streamlined and secure development process. 
+* They are all prepared for you through the Golden Path approach, ensuring a streamlined and secure development process.
 * In fact, we could even replace Tekton with another CI tool, and you wouldn’t need to be concerned with the details!
-* Once the build pipeline execution is complete, let's review the status of our application. 
+* Once the build pipeline execution is complete, let's review the status of our application.
 * Switch to the *Topology* tab.
 
 image::CI_Tab.png[]
@@ -295,7 +295,7 @@ image::CI_Tab.png[]
 
 === Check application status
 
-* In the *Topology* view, you will now see that our Pod is surrounded by a healthy blue ring, indicating that the Pod is running successfully. 
+* In the *Topology* view, you will now see that our Pod is surrounded by a healthy blue ring, indicating that the Pod is running successfully.
 * To open the application, click on the small icon located at the top right of the Pod.
 * Your application will open in a new browser tab.
 
@@ -310,8 +310,8 @@ image::My_Qurkus_App_Running.png[]
 
 image::ArgoCD_Healthy_Status.png[]
 
-* Then, move to the *Image Registry* tab. 
-* The *Registry* should now be populated with images. 
+* Then, move to the *Image Registry* tab.
+* The *Registry* should now be populated with images.
 * Click on the *Scan Results* for the image tagged as *latest* to review it's scan results.
 
 
@@ -321,7 +321,7 @@ image::Scanned_Image_In_Quay.png[]
 
 image::Scan_Results.png[]
 
-* Finally, switch to the *Docs* tab. 
+* Finally, switch to the *Docs* tab.
 * Here, you can verify that the documentation has been updated with the changes you made earlier.
 
 image::Updated_Docs.png[]
@@ -330,7 +330,7 @@ image::Updated_Docs.png[]
 
 === Section Summary
 
-* In this section we witnessed the transformative impact of Red Hat Developer Hub (RHDH) on the developer experience. 
-* We saw how Golden Path Templates streamline project onboarding, align development with organizational standards, and integrates various tools for a seamless workflow. 
-* RHDH addresses common challenges in software development, transforming complex and disjointed environments into intuitive and efficient interfaces, thereby enhancing productivity and fostering a more satisfying development process. 
+* In this section we witnessed the transformative impact of Red Hat Developer Hub (RHDH) on the developer experience.
+* We saw how Golden Path Templates streamline project onboarding, align development with organizational standards, and integrates various tools for a seamless workflow.
+* RHDH addresses common challenges in software development, transforming complex and disjointed environments into intuitive and efficient interfaces, thereby enhancing productivity and fostering a more satisfying development process.
 * Happy developers make happy code!

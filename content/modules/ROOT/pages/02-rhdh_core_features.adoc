@@ -2,7 +2,7 @@
 
 === What is Red Hat Developer Hub (RHDH)?
 
-* Red Hat Developer Hub is Red Hat’s enterprise-grade open developer platform for building link:https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/[Internal Developer Portals] (IDPs) based on the upstream link:https://www.backstage.io[Backstage] project. 
+* Red Hat Developer Hub is Red Hat’s enterprise-grade open developer platform for building link:https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/[Internal Developer Portals,window=_blank] (IDPs) based on the upstream link:https://www.backstage.io[Backstage,window=_blank] project.
 * IDPs play a pivotal role in modern development environments by offering developers a centralized interface for accessing the organization's technology stack, eliminating the need for developers to search for information or traverse a labyrinth of disconnected systems.
 * RHDH is equipped with an array of capabilities and tools meticulously curated based on Red Hat's vision and industry best practices to offer our customers a powerful, opinionated and fully supported IDP to meet the evolving needs of modern development environments.
 
@@ -30,9 +30,9 @@ image::RHDH_Core_Capablties.png[]
 
 * Plugins are the heart and soul of the Red Hat Developer Hub (RHDH), crucial for its extensibility.
 * RHDH utilizes two types of plugins, Backend and Frontend.
-* Backend Plugins integrate RHDH with external systems (like source control and CI/CD tools), driving the core logic for various features of RHDH. 
+* Backend Plugins integrate RHDH with external systems (like source control and CI/CD tools), driving the core logic for various features of RHDH.
 * Frontend Plugins interpret and display data from Backend plugins, offering a user-friendly interface for seamless interaction with RHDH features.
-* Red Hat offers a wide spectrum of certified and supported link:https://developers.redhat.com/products/plugins-for-backstage/overview[plugins]
+* Red Hat offers a wide spectrum of certified and supported link:https://developers.redhat.com/products/plugins-for-backstage/overview[plugins,window=_blank]
 
 image::RHDH_Plugins.png[]
 
@@ -48,11 +48,11 @@ Are you ready to dive in? Let's begin by guiding you through the process of logg
 
 === Login to Red Hat Developer Hub (RHDH)
 
-* The login process for our workshop leverages the link:https://janus-idp.io/plugins/keycloak[keycloack plugin]. 
-* Our *Platform Engineering* team has set up link:https://www.keycloak.org/[Keycloak] to use *GitLab* as the identity provider.
+* The login process for our workshop leverages the link:https://janus-idp.io/plugins/keycloak[keycloack plugin,window=_blank].
+* Our *Platform Engineering* team has set up link:https://www.keycloak.org/[Keycloak,window=_blank] to use *GitLab* as the identity provider.
 *  Authenticating to RHDH involves four straightforward steps:
 
-. Navigate to the RHDH authentication page by clicking on this link:{rhdh_url}[link]. When prompted, click the *GitLab* button at the bottom of the screen.
+. Navigate to the RHDH authentication page by clicking on this link:{rhdh_url}[link,window=_blank]. When prompted, click the *GitLab* button at the bottom of the screen.
 +
 
 image::Login_Keycloak.png[]
@@ -94,8 +94,8 @@ Next, let’s explore how this application is modeled in the *Software Catalog* 
 
 * The *Software Catalog* serves as a centralized directory, listing all services, libraries, and documentation in one easily accessible location.
 * It enables two main use-cases:
-. *Streamlining Software Management:* The Catalog provides teams a unified view of their entire software portfolio, including services, libraries, websites, ML models, and more. 
-. *Enhancing Discoverability:* The Catalog makes all software within your organization easily discoverable, including details about their current status and ownership details. 
+. *Streamlining Software Management:* The Catalog provides teams a unified view of their entire software portfolio, including services, libraries, websites, ML models, and more.
+. *Enhancing Discoverability:* The Catalog makes all software within your organization easily discoverable, including details about their current status and ownership details.
 
 * Go ahead and click on *Catalog* in the left menu.
 
@@ -106,7 +106,7 @@ image::Open_Catalog.png[]
 
 image::RHDH_Catalog.png[]
 
-* This leads to a detailed view of the relationships between the application’s components. 
+* This leads to a detailed view of the relationships between the application’s components.
 * To fully understand the dependencies between these components, click on *View graph* located at the bottom of the *Relations* panel.
 
 image::RHOne-System.png[]
@@ -123,8 +123,8 @@ image::RHOne-System.png[]
 
 image::System_Relations_Graph.png[]
 
-* Let’s dive deeper into *RHDH relationship model*. 
-* In *RHDH*’s terminology, assets are referred to as *Entities*. 
+* Let’s dive deeper into *RHDH relationship model*.
+* In *RHDH*’s terminology, assets are referred to as *Entities*.
 * The most commonly used entities are *Core* and *Organizational* entities.
 * Let's explore them further:
 
@@ -144,26 +144,26 @@ These organizational entities own the core entities and play a crucial role in m
 
 image::System_Model.png[]
 
-* Now that we have a better grasp of the terminology, let's examine the relationship diagram of our *rh-one* application. 
-* The diagram shows that all components, APIs and resources are part of the system called *rh-one-system*. 
+* Now that we have a better grasp of the terminology, let's examine the relationship diagram of our *rh-one* application.
+* The diagram shows that all components, APIs and resources are part of the system called *rh-one-system*.
 * The component named *rh-one-backend* provides an API named *events_api*, and it relies on two dependencies:
 . A database called *rh_one_database*
 . An S3 bucket called *events_S3*
-* The other component named *rh-one-frontend* consumes the *events-api*. 
+* The other component named *rh-one-frontend* consumes the *events-api*.
 
-* So you can immediately identify that any modifications made to the *events-api* will directly impact the *rh-one-frontend* component. 
+* So you can immediately identify that any modifications made to the *events-api* will directly impact the *rh-one-frontend* component.
 * This is how the relationship graph helps you as a developer in considering the broader system implications when planning changes to any single component.
 
 image::Relations_Graph.png[]
 
-NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application in this link:{gitlab_url}/rhdh/rh1-software-templates/blob/main/catalogs.yaml[Yaml Fle] 
+NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application in this link:{gitlab_url}/rhdh/rh1-software-templates/blob/main/catalogs.yaml[Yaml Fle,window=_blank]
 
 '''
 
 === APIs
 
-* The *API* capability within Red Hat Developer Hub (RHDH) simplifies the way developers discover and interact with internal and external APIs. 
-* This functionality mirrors the *Software Catalog*'s capabilities, presenting similar information and diagrams, but with a focus on APIs. 
+* The *API* capability within Red Hat Developer Hub (RHDH) simplifies the way developers discover and interact with internal and external APIs.
+* This functionality mirrors the *Software Catalog*'s capabilities, presenting similar information and diagrams, but with a focus on APIs.
 * In the next lab, we will demonstrate how developers can interact directly with these APIs using a *Swagger UI* interface.
 
 image::events_api.png[]
@@ -172,7 +172,7 @@ image::events_api.png[]
 
 === TechDocs
 
-* Traditionally, documentation is often stored in systems separate from the codebase.. 
+* Traditionally, documentation is often stored in systems separate from the codebase..
 * This separation can lead to inconsistencies, as developers need to update two different systems whenever changes are made to a component.
 * Instead, *RHDH* adopts the *documentation-as-code* approach. This means documentation is stored alongside the code, albeit in a separate directory.
 * As a result, developers can simultaneously create new features, modify code, update documentation, and commit all these changes to the repository in a single action.
@@ -193,7 +193,7 @@ image::Search_Results.png[]
 
 === Learning Paths
 
-* Learning Paths are a valuable tool for organizations, offering a structured way to curate and link to external educational materials. 
+* Learning Paths are a valuable tool for organizations, offering a structured way to curate and link to external educational materials.
 * This facilitates skill development and continuous learning for developers.
 * In our example, we have created a series of Learning Paths using Red Hat’s comprehensive resources.
 * The content and structure of these Learning Paths are flexible and customizable, allowing them to be tailored to meet the specific needs and goals of different customers.
@@ -204,7 +204,7 @@ image::Learning_Paths.png[]
 
 === Clusters
 
-* The *Clusters* view offers detailed insights into our Kubernetes clusters. 
+* The *Clusters* view offers detailed insights into our Kubernetes clusters.
 * For instance, in our workshop, you can see that the OpenShift cluster hosting our workshop is deployed on AWS, running on version 4.12, and spread across 6 nodes.
 
 image::Cluster_View.png[]
@@ -218,10 +218,10 @@ image::Cluster_Details.png[]
 
 ==== Tech Radar
 
-* *Tech Radar* is a tool designed for organizations to showcase the spectrum of technologies they have adopted. 
+* *Tech Radar* is a tool designed for organizations to showcase the spectrum of technologies they have adopted.
 * It serves as a visual guide to the technologies that are adopted, those currently under trial, and those that have been put on hold.
 * For example, in the realm of development languages, Kotlin is currently under assessment for potential adoption.
-* On the other hand, Java runtime version 8 and earlier, along with Python, Cobol, and .Net, have been put on hold. 
+* On the other hand, Java runtime version 8 and earlier, along with Python, Cobol, and .Net, have been put on hold.
 * This view is customizable to align with an organization's set up. It provides new developers with a clear understanding of the technologies available for use and those that are not recommended or supported within the organization.
 
 image::Tech_Radar.png[]
@@ -232,7 +232,7 @@ image::Tech_Radar.png[]
 
 * In this section, we explored the diverse capabilities of the Red Hat Developer Hub (RHDH).
 * We saw how these capabilities streamline the development process, enhance information accessibility, and support best practices, significantly improving the developer experience in modern development environments.
-* In the next section, we will explore how *Golden Path Templates* simplify and enhance the development experience. 
+* In the next section, we will explore how *Golden Path Templates* simplify and enhance the development experience.
 
 
 
