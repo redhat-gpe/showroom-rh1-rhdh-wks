@@ -16,6 +16,6 @@
 
 *Discover the effectiveness of Golden Path Templates in RHDH for optimizing developer workflows. Understand how these templates simplify and guide project setups, enhancing overall productivity.*
 
-== Challenge Lab
+== Craft your first Golden Path Template
 
-*Challenge yourself in this labe where you will learn how to craft your first Golden Path Template.*
+*Challenge yourself in this lab where you will learn how to craft your first Golden Path Template.*

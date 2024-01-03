@@ -6,4 +6,4 @@
 
 * xref:03-golden_path_templates.adoc[4. How Golden Path Templates Simplify the Developer Experience]
 
-* xref:04-bonus_lab.adoc[5. Crafting your first Golden Path Template]
+* xref:04-craft_your_first_gpt.adoc[5. Craft your first Golden Path Template]
