@@ -1,0 +1,341 @@
+== Craft your first Golden Path Template
+
+* In the previous lab, you witnessed a *Golden Path Template* in action.
+* We explained that a *Golden Path Template* is defined using a YAML file. 
+* This file is processed by the *Scaffolder*, *RHDH*'s templating engine, which executes the steps outlined in the template.
+* This lab will guide you through creating your very first *Golden Path Template*.
+
+'''
+
+=== Hello World Template
+
+* Let's look at an example to grasp how templates are defined. And what better starting point than the classic Hello World template!
+
+[source,yaml]
+----
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: my-first-template
+  title: Hello World
+  description: A simple Hello World example.
+spec:
+  owner: rhdh
+  type: service
+  
+  parameters:
+    - title: Enter the name you'd like to greet.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          default: World
+    - title: Input the name of the greeter.
+      required:
+        - greeter
+      properties:
+        greeter:
+          type: string
+          default: RHDH     
+  
+  steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'
+  
+  output:
+    message: 'The parameters you provided are: ${{ parameters.name }} and ${{ parameters.greeter }}'
+----
+
+* You'll note that the template is divided into four  sections:
+. *Header*: Here, you provide essential information about the template.
+. *Parameters*: This section is for gathering inputs from the user.
+. *Steps*: In this section, you define the actions to be executed by the *Scaffolder*.
+. *Output*: This section is optional and allows you to provide details about the tasks performed by the *Scaffolder*.
+
+---
+
+=== Template Header 
+
+* The header section is mandatory for every template.
+* The *Component* card on the *Create Component* page is displayed based on the details in the Header section.
+* For example, this is the header of the Golden Path Template you used in the previous lab:
+
+[source,yaml]
+----
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: quarkus-stssc-template
+  title: Securing a Quarkus Service Software Supply Chain
+  description: Create a simple microservice built on a trusted software supply chain
+  tags:
+    - recommended
+    - java
+    - quarkus
+    - maven
+spec:
+  owner: rhdh
+  type: service
+----
+
+* The Component card was displayed by *RHDH* based on the header information, including the title, description, and tags.
+
+image::Component_Card.png[]
+
+* In any template, the fields *apiVersion*, *kind*, and *metadata.name* are required.
+* RHDH recognizes that this yaml file defines a Template when you set the field *kind* to *Template*.
+* The fields *spec.owner* and *spec.type* are also required
+.. *spec.owner* denotes the team responsible for the template.
+.. While *spec.type* indicates the type of component produced.
+* The spec.type field can be a:
+.. service - a backend service, typically with an API
+.. website - a front-end website
+.. library - a software library, such as an npm module or a Java library
+
+---
+
+===  Template Parameters 
+
+* Within the template, the parameters property is used to generate the form. 
+* You can choose to break up the parameter prompting into *form steps* or collect all the parameters in a single step.
+* For example in our *Hello World* template, we defined two steps, one to input the *name* and another to input the *greeter* as follows:
+
+[source,yaml]
+----
+parameters:
+    - title: Enter the name you'd like to greet.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          default: World
+    - title: Input the name of the greeter.
+      required:
+        - greeter
+      properties:
+        greeter:
+          type: string
+          default: RHDH    
+----
+
+* In other words the parameters property is an array of objects, each entry in the array is a *form step*.
+* Each form step must specify a *title*, which *properties* it will ask from the user, and if any of them is *required*.
+* A property type can be: *string*, *number*, *array*, or *object*.
+* You can also specify options for each property, such as default values or a list of possible values.
+
+---
+
+=== Template Steps
+
+* Steps define the actions that are performed by the *Scaffolder* template during its execution.
+* They are executed sequentially as defined in the template.
+* Each step utilizes actions for tasks such as publishing to a git repository or registering a component in the catalog.
+* RHDH offers various built-in actions, and you can define custom actions as well.
+* In our *Hello World* template we have defined one step *log-message*, which uses the action *debug:log* to display a message to the user.
+
+[source,yaml]
+----
+steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'   
+----
+
+* To see the available actions in *RHDH* and understand their usage, go to the *Create Content* page by selecting *Create* from the left sidebar menu.
+* Next, open the *Kebab* menu at the top right of the *Create Content* page and choose *Installed Actions*.
+
+image::Installed_Actions.png[]
+
+* Search for *debug::log* to learn more about this action, including viewing some examples.
+
+image::debug-log-action.png[]
+
+---
+
+=== Template Output
+
+* Output allows to display results to the user or use the output from executing actions.
+* In our *Hello World* template we are simply displaying the input that the user provided
+
+[source,yaml]
+----
+  output:
+    message: 'The parameters you provided are: ${{ parameters.name }} and ${{ parameters.greeter }}'
+----
+
+* To register a component in our catalog, for instance, we would use the *catalog:register* action.
+* As with the *debug:log* action, you can review the expected input and output for this action.
+
+image::Catalog_Register_Action.png[]
+
+* This is how we would set up the Step to run the action *catalog:register* and then use it's output parameter *entityref* to give the user a link to access the component in the Catalog..
+
+[source,yaml]
+----
+steps:
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+output:
+    links:
+      - title: Open Component in catalog
+        icon: catalog
+        entityRef: {{ '${{ steps.register.output.entityRef }}' }}
+----
+
+* We are now ready to test the *Hello World* template and see it in action.
+
+---
+
+== Test Hello World Template
+
+* First clone the repo that hosts the software templates to your local drive by executing the following command:
+
+[source,bash]
+----
+git clone {gitlab_url}/rhdh/rh1-software-templates.git
+----
+
+* *RHDH* ships with a convenient *Template Editor* tool that lets you preview and try out templates. 
+* To access the *Template Editor* navigate to the *Create Content* page by clicking on *Create* in the left sidebar menu. 
+* Then expand the *Kebab menu* on the upper right of the *Create Content* page and click on *Template Editor*. 
+
+image::template_editor.png[]
+
+* Select  the first option *Load Template Directory*
+
+image::Select_Template_Editor.png[]
+
+* Navigate to the path where you cloned the software templates repo and select the folder *scaffolder-templates/hello-world-template*
+
+image::select-hello-worlds-template.png[]
+
+* You will see a pop-up with the message *"let site view files"*, click on *View files*
+* The *Template Editor* provides a preview of the form that will be presented to the user.
+
+image::Form-Preview.png[]
+
+* In our template, we've set up the *name* and *greeter* fields in two separate *form steps*, which is why they'll appear to the user in separate forms..
+* You can either enter a *name* or keep the default value, then click *Next Step*.
+* Repeat this for the greeter field and click *Next Step* again.
+* Review the input you provided, then click *Create*.
+* You'll see the results of running the template in dry-run mode.
+* Toggle between the *log* and *output* tabs to see the results.
+
+
+image::Template_Results.png[]
+
+
+---
+
+== Modify Hello World Template
+
+* It probably did not make much sense to split the name and greeter fields into two forms, so let's merge them into a single form.
+* We also need to ensure that the user selects a greeter only from the list of groups available in the *RHDH* Catalog.
+* Lastly, the format of the name entered by the user must adhere to specific rules:
+. It must begin with a capital letter.
+. It can include only letters (upper or lower case), numbers, or underscores.
+. It's maximum length can only be 5 letters.
+
+=== Requirement 1: Merge into a single form
+
+* To include both *name* and *greeter* in a single form, we will move all the attributes of the *greeter* property to the first *form step*, similar to the yaml structure shown below. 
+
+[source,yaml]
+----
+parameters:
+    - title: Enter the values for name and greeter
+      required:
+        - name
+        - greeter
+      properties:
+        name:
+          type: string
+          default: World
+        greeter:
+          type: string
+          default: RHDH    
+----
+
+=== Requirement 2: Greeter can only be selected from list of groups
+
+* RHDH includes built-in UI fields designed to make it easier for users to input valid values.
+* For this requirement we can use the *Owner Picker*, which returns a selection of both groups and users registered in the *RHDH* Catalog.
+* We can implement a filter so that the OwnerPicker would shows only entities of kind *group*, as shown in the following yaml structure.
+
+
+[source,yaml]
+----
+parameters:
+    - title: Enter the values for name and greeter
+      required:
+        - name
+        - greeter
+      properties:
+        name:
+          type: string
+          default: World
+        greeter:
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group     
+----
+
+=== Requirement 3: Name format rules
+
+* *RHDH* supports the use of regular expressions to ensure that a string conforms to specific rules.
+* For our purpose, we can utilize the regex:: ^[A-Z][A-Za-z0-9_]*$
+. [A-Z] ensures the first character is a capital letter (A to Z).
+. [A-Za-z0-9_] allows any number of alphanumeric characters (both upper and lower case) and underscores after the first character. 
+. The asterisk means zero or more of the preceding element.
+* The *maxLength* option can be used to limit the maximum length of name to 5.
+* Finally, we can also provide hints to guide the user in understanding these rules, as shown in the following yaml structure.
+
+[source,yaml]
+----
+parameters:
+    - title: Enter the values for name and greeter
+      required:
+        - name
+        - greeter
+      properties:
+        name:
+          type: string
+          default: World
+          maxLength: 5
+          pattern: '^[A-Z][A-Za-z0-9_]*$'
+          ui:help: 'Hint: name must begin with a capital letter, include only letters (upper or lower case), numbers, or underscores, and the maximum length can only be 5 letters.'
+        greeter:
+          type: string
+          ui:field: OwnerPicker 
+          ui:options:
+            catalogFilter:
+              kind: Group  
+----
+
+* Go ahead and modify the *Hello World Template* with the new parameters, then reload it to test the changes in parameters and user form.
+
+---
+
+== Bonus Lab
+
+* Here is a challenge for you: Apply what you've learned to develop a Golden Path Template that accomplishes the following: 
+. Process a config-info yaml file containing the component definition, which is hosted on Gitlab.
+. Register a new component in the RHDH Catalog
+* You will need to use the the *catalog:register* action to set up the template steps.
+
+TIP: The solution to the Bonus lab can be found in the folder where you cloned the software templates repo under the path *scaffolder-templates/register-component*
+
+

@@ -156,7 +156,7 @@ image::System_Model.png[]
 
 image::Relations_Graph.png[]
 
-NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application in this link:{gitlab_url}/rhdh/rh1-software-templates/blob/main/catalogs.yaml[Yaml Fle,window=_blank]
+NOTE: The *Catalog* is built around the concept of metadata YAML files stored together with the code, you can explore the YAML file used to generate the *rh-one* application in this link:{gitlab_url}/rhdh/rh1-software-templates/blob/main/catalogs.yaml[Yaml File,window=_blank] 
 
 '''
 
