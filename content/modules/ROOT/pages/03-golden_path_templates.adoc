@@ -37,7 +37,7 @@ TIP: Feel free tp explore both repositories by accessing the link:{gitlab_url}/d
 
 * To launch the *Golden Path Template*, click on *Create* in the sidebar menu.
 * You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you.
-* Right now we have only one template, but we could have as many as we need.
+* Right now we have only two templates, but we could have as many as we need.
 * Click the *Choose* link on the bottom right of the “Securing a Quarkus Service Software Supply Chain“ tile to select this template.
 
 image::Choose_GPT.png[]
