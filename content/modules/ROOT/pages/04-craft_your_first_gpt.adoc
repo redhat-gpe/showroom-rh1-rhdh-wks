@@ -201,7 +201,7 @@ output:
 
 * First clone the repo that hosts the software templates to your local drive by executing the following command:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
 git clone {gitlab_url}/rhdh/rh1-software-templates.git
 ----
