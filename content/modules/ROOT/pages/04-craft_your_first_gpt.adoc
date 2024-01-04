@@ -332,9 +332,15 @@ parameters:
 == Bonus Lab
 
 * Here is a challenge for you: Apply what you've learned to develop a Golden Path Template that accomplishes the following: 
-. Process a config-info yaml file containing the component definition, which is hosted on Gitlab.
-. Register a new component in the RHDH Catalog
-* You will need to use the the *catalog:register* action to set up the template steps.
+. Fetch the config-info file from Gitlab
+. Publish a new repo for your component in Gitlab
+. Register the new component in the RHDH Catalog
+* You will need to use the following the actions:
+. *fetch:template* to fetch the config-info file
+. *publish:gitlab* to publish a new repo for your component
+. *catalog:register* to register the component the RHDH Catalog
+* Run the "Onboard your component to RHDH" template to view the parameters that are used by the template
+* Review the documentation to map the parameters to the required input for each of the three actions.
 
 TIP: The solution to the Bonus lab can be found in the folder where you cloned the software templates repo under the path *scaffolder-templates/register-component*
 
