@@ -140,7 +140,8 @@ image::Create_Issue.png[]
 
 image::Provide_Issue_Details.png[]
 
-* Switch back to the *my-quarkus-app Dashboard* tab in your browser.
+* Switch back to Developer Hub tab in your browser.
+* On the top right corner, under the *Component* heading, click 'my-quarkus-app'.
 * Then navigate to the *Issues* tab by selecting it from the upper menu.
 * The issue you've raised is now visible and can be tracked by all developers collaborating on the project.
 
