@@ -220,7 +220,7 @@ image::Topology_View.png[]
 
 === Image Registry tab
 
-* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Qua*y hosted registry.
+* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Quay* hosted registry.
 * As we anticipated, the *Image Registry* is currently empty.
 * To address this, let's switch back to the browser tab where you logged-in *Red Hat OpenShift Dev Spaces* at the beginning of this section.
 
