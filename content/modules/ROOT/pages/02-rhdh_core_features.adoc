@@ -2,7 +2,7 @@
 
 === What is Red Hat Developer Hub (RHDH)?
 
-* Red Hat Developer Hub is Red Hat’s enterprise-grade open developer platform for building link:https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/[Internal Developer Portals,window=_blank] (IDPs) based on the upstream link:https://www.backstage.io[Backstage,window=_blank] project.
+* Red Hat Developer Hub is Red Hat’s enterprise-grade developer platform for building link:https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/[Internal Developer Portals,window=_blank] (IDPs) based on the upstream link:https://www.backstage.io[Backstage,window=_blank] project.
 * IDPs play a pivotal role in modern development environments by offering developers a centralized interface for accessing the organization's technology stack, eliminating the need for developers to search for information or traverse a labyrinth of disconnected systems.
 * RHDH is equipped with an array of capabilities and tools meticulously curated based on Red Hat's vision and industry best practices to offer our customers a powerful, opinionated and fully supported IDP to meet the evolving needs of modern development environments.
 

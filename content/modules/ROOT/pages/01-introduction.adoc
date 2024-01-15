@@ -1,4 +1,4 @@
-== Introdction
+== Introduction
 
 === A Day in the Life of a Developer
 
@@ -14,7 +14,7 @@ image::dev_challenges.png[]
 
 === Red Hat Developer Hub (RHDH) to the rescue
 
-Step into the world of the link:https://developers.redhat.com/rhdh[Red Hat Developer Hub,window=_blank] (RHDH), where the future of cloud-native development unfolds. In this workshow you will learn:
+Step into the world of the link:https://developers.redhat.com/rhdh[Red Hat Developer Hub,window=_blank] (RHDH), where the future of cloud-native development unfolds. In this workshop you will learn:
 
 * The pivotal role of RHDH in a developer's journey, focusing on how it effectively addresses the development challenges we've outlined earlier.
 * An introduction to Golden Path templates and their role in streamlining the developer experience.
