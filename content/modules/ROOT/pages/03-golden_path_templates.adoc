@@ -33,7 +33,7 @@ In the next section, we will guide you through the process of executing your fir
 
 image::GPT_Flow.png[]
 
-TIP: Feel free tp explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
+TIP: Feel free to explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
 
 * To launch the *Golden Path Template*, click on *Create* in the sidebar menu.
 * You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you.
@@ -100,7 +100,7 @@ image::RHDH_Dashboard.png[]
 
 . Choose to *login with OpenShift*
 . Select *login with rhsso*
-. Then enter your OpenShift credentials
+. Then enter your OpenShift credentials with user `{openshift_admin_user}` and password `{openshift_admin_password}`
 . Authorize *OpenShift Dev Spaces* to access your account by clicking the *Allow selected permissions* button.
 . You'll then be prompted to sign into *GitLab*. Click the *Sign in* button to proceed.
 . Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button.
@@ -140,7 +140,8 @@ image::Create_Issue.png[]
 
 image::Provide_Issue_Details.png[]
 
-* Switch back to the *my-quarkus-app Dashboard* tab in your browser.
+* Switch back to Developer Hub tab in your browser.
+* On the top right corner, under the *Component* heading, click 'my-quarkus-app'.
 * Then navigate to the *Issues* tab by selecting it from the upper menu.
 * The issue you've raised is now visible and can be tracked by all developers collaborating on the project.
 
@@ -219,7 +220,7 @@ image::Topology_View.png[]
 
 === Image Registry tab
 
-* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Qua*y hosted registry.
+* Under the hood we are using a *Plugin* to enrich the *Image Registry* view with insights from a *Quay* hosted registry.
 * As we anticipated, the *Image Registry* is currently empty.
 * To address this, let's switch back to the browser tab where you logged-in *Red Hat OpenShift Dev Spaces* at the beginning of this section.
 
