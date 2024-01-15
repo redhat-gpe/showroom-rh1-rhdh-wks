@@ -33,7 +33,7 @@ In the next section, we will guide you through the process of executing your fir
 
 image::GPT_Flow.png[]
 
-TIP: Feel free to explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
+TIP: After you launched the GPT, feel free to explore both repositories by accessing the link:{gitlab_url}/development/my-quarkus-app[Source Code Repo,window=_blank] and the link:{gitlab_url}/development/my-quarkus-app-gitops[GitOps Manifests Repo,window=_blank]
 
 * To launch the *Golden Path Template*, click on *Create* in the sidebar menu.
 * You will be presented with all the Golden Path Templates that the Platform Engineering team configured for you.
