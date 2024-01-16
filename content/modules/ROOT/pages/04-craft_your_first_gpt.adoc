@@ -175,7 +175,7 @@ image::debug-log-action.png[]
 
 image::Catalog_Register_Action.png[]
 
-* This is how we would set up the Step to run the action *catalog:register* and then use it's output parameter *entityref* to give the user a link to access the component in the Catalog..
+* This is how we would set up the Step to run the action *catalog:register* and then use its output parameter *entityref* to give the user a link to access the component in the Catalog.
 
 [source,yaml]
 ----
@@ -199,7 +199,7 @@ output:
 
 == Test Hello World Template
 
-* First clone the repo that hosts the software templates to your local drive by executing the following command:
+* First clone the repo that hosts the software templates to your local drive by executing the following command in a local terminal on your laptop:
 
 [source,bash,subs="attributes+"]
 ----
@@ -245,7 +245,7 @@ image::Template_Results.png[]
 * Lastly, the format of the name entered by the user must adhere to specific rules:
 . It must begin with a capital letter.
 . It can include only letters (upper or lower case), numbers, or underscores.
-. It's maximum length can only be 5 letters.
+. Its maximum length can only be 5 letters.
 
 === Requirement 1: Merge into a single form
 
