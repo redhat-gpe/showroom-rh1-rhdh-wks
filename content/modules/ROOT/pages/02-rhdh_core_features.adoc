@@ -216,7 +216,7 @@ image::Cluster_Details.png[]
 
 '''
 
-==== Tech Radar
+=== Tech Radar
 
 * *Tech Radar* is a tool designed for organizations to showcase the spectrum of technologies they have adopted.
 * It serves as a visual guide to the technologies that are adopted, those currently under trial, and those that have been put on hold.

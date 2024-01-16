@@ -4,7 +4,7 @@
 
 Imagine you've just joined a new organization as a developer, excited and eager to make your mark. Your enthusiasm, however, is quickly dampened by the reality of disjointed systems and scattered information. You're assigned to update a service, but locating the relevant repository and documentation becomes a time-consuming challenge due to poor organization and outdated references.
 
-Setting up your local development environment doesn't fare much better, with fragmented instructions that don't match the current technology stack. Slack messages with conflicting guidance add to the confusion, leading to a slow and frustrating start.
+Setting up your local development environment doesn't go much better, with fragmented instructions that don't match the current technology stack. Slack messages with conflicting guidance add to the confusion, leading to a slow and frustrating start.
 
 By the end of the day, you've managed a meager commit, your initial excitement replaced with a sense of frustration. This isn't the developer experience you signed up for. It's clear that without a unified system to streamline these processes, your talents are underutilized, bogged down by the very infrastructure that's supposed to support your work.
 
