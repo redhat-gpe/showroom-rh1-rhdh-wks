@@ -10,7 +10,7 @@
 
 == Red Hat Developer Hub Core Features
 
-*A comprehensive overview of the Red Hat Developer Hub, highlighting its key features like the Catalog, documentation, search capabilities all aimed at enhancing developer experience and efficiency.*
+*A comprehensive overview of the Red Hat Developer Hub, highlighting its key features like the Catalog, documentation, and search capabilities all aimed at enhancing developer experience and efficiency.*
 
 == How Golden Path Templates Simplify the Developer Experience
 

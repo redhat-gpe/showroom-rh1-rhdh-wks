@@ -211,7 +211,8 @@ image::Catalog_View_From_Ownership_Link.png[]
 * Immediately, you'll notice a red ring around your *Pod*, indicating a startup issue.
 * Hover over the Pod to reveal an *ErrImagePull* error.
 * When you click on the Pod, a side pane slides in from the right to show more details.
-* Switch to the *Resources* tab, the error message makes it clear that the application Pod failed to start due to a missing image.
+* Switch to the *Resources* tab to dig deeper into this error.
+* You'll see an ImagePullBack error which could be the result of a missing image in the Image Registry. 
 * To confirm this, let's proceed to the *Image Registry* view by selecting it from the upper menu.
 
 image::Topology_View.png[]
@@ -275,7 +276,10 @@ image::My_First_Commit.png[]
 
 === CI tab
 
-* The *CI* tab enables you to track the progress of the build pipeline for the my_quarkus_app component.
+* The *CI* tab enables you to track the progress of the build pipeline for the *my_quarkus_app* component.
+
+NOTE: The pipeline can take up to 10 minutes to finish.
+
 * Notice how security measures are baked into the build pipeline, adhering to the policies set by the security team.
 * These measures include:
 
@@ -313,7 +317,7 @@ image::ArgoCD_Healthy_Status.png[]
 
 * Then, move to the *Image Registry* tab.
 * The *Registry* should now be populated with images.
-* Click on the *Scan Results* for the image tagged as *latest* to review it's scan results.
+* View the *Scan Results* by clicking on the link under the *Security Scan* column for the image tagged as *latest* to review its scan results.
 
 
 image::Scanned_Image_In_Quay.png[]
@@ -332,6 +336,6 @@ image::Updated_Docs.png[]
 === Section Summary
 
 * In this section we witnessed the transformative impact of Red Hat Developer Hub (RHDH) on the developer experience.
-* We saw how Golden Path Templates streamline project onboarding, align development with organizational standards, and integrates various tools for a seamless workflow.
+* We saw how Golden Path Templates streamline project onboarding, align development with organizational standards, and integrate various tools for a seamless workflow.
 * RHDH addresses common challenges in software development, transforming complex and disjointed environments into intuitive and efficient interfaces, thereby enhancing productivity and fostering a more satisfying development process.
 * Happy developers make happy code!

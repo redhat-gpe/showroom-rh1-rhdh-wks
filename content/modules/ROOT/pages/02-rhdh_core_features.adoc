@@ -19,7 +19,7 @@ RHDH offers five core capabilities:
 . *The Software Catalog:* A centralized directory that lists all services, libraries, and documentation, simplifying the process for developers to find the components they need.
 . *TechDocs:*  Facilitates easy access to up-to-date documentation for all software components. It supports the documentation-as-code philosophy, allowing documentation to live alongside the code, making it very easy to maintain documentation.
 . *Search:* Enables developers to efficiently locate information across the entire RHDH ecosystem. This feature is essential for quickly finding services, documentation, and other resources.
-. *Software templates:* Streamlines the setup process for new projects, services, or libraries. This ensures consistency and adherence to best practices in all new development efforts.
+. *Golden Path templates:* Streamlines the setup process for new projects, services, or libraries. This ensures consistency and adherence to best practices in all new development efforts.
 . *Plugins:* Modular extensions that enhance RHDH with new features or integrate it with external tools and services.
 
 In the following sections, we will delve into more details about each of these capabilities.
@@ -50,7 +50,7 @@ Are you ready to dive in? Let's begin by guiding you through the process of logg
 
 === Login to Red Hat Developer Hub (RHDH)
 
-* The login process for our workshop leverages the link:https://janus-idp.io/plugins/keycloak[keycloack plugin,window=_blank].
+* The login process for our workshop leverages the link:https://janus-idp.io/plugins/keycloak[keycloak plugin,window=_blank].
 * Our *Platform Engineering* team has set up link:https://www.keycloak.org/[Keycloak,window=_blank] to use *GitLab* as the identity provider.
 *  Authenticating to RHDH involves four straightforward steps:
 
