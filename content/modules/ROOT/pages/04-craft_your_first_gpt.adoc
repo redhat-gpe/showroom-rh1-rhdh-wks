@@ -376,7 +376,7 @@ spec:
 . **description** with the title **Description** and a type of **string**.
 * After completing these additions, you can test the new form parameters by loading the template in the **Template Editor** and running the template in **dry-run** mode.
 
-[source,yaml]
+[source,yaml,subs="attributes"]
 ----
 parameters:
     - title: Provide new component details
