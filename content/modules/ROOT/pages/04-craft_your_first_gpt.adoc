@@ -331,17 +331,163 @@ parameters:
 
 == Bonus Lab
 
-* Here is a challenge for you: Apply what you've learned to develop a Golden Path Template that accomplishes the following: 
-. Fetch the config-info file from Gitlab
-. Publish a new repo for your component in Gitlab
-. Register the new component in the RHDH Catalog
-* You will need to use the following the actions:
-. *fetch:template* to fetch the config-info file
-. *publish:gitlab* to publish a new repo for your component
-. *catalog:register* to register the component the RHDH Catalog
-* Run the "Onboard your component to RHDH" template to view the parameters that are used by the template
-* Review the documentation to map the parameters to the required input for each of the three actions.
+* Here is a challenge for you: Apply what you've learned to craft a **Golden Path Template** that creates and registers a new component in the RHDH Catalog.
+* First, get a feel for how this GPT functions by trying it out yourself.
+* Navigate to the **Create View** by clicking **Create** in the left side-menu..
+* Then select the template **Onboard your component to RHDH**. 
+
+image::bonus_lab_select_template.png[]
+
+* Run the template, keeping a close eye on the form parameters.
+
+image::bonus_lab_form.png[]
+
+* Here are the four sections of this template, but some of them are incomplete.
+* Your challenge is to fill in these incomplete parts, drawing upon your learning from today's workshop.
+* Find the template in the software templates repository you cloned earlier, under **scaffolder-templates/register-component-lab**, and add the missing parameters using your preferred editor.
+
+=== Template Header 
+
+* As discussed in the **Hello World** template, the header determines how the tile for this GPT appears in the **Create View**.
+* This YAML source in this section is just for your understanding, and there is nothing that you need to do here.
+
+[source,yaml]
+----
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: add-component-template
+  title: Onboard your component to RHDH
+  description: Create and register a new component to RHDH Catalog
+  tags:
+    - bonus
+    - rhone
+spec:
+  owner: rhdh
+  type: service
+----
+
+===  Template Parameters 
+
+* We now focus on the parameters section of the template. The forms you interacted with when you executed template are based on the parameters defined here.
+* In the YAML source provided hereunder, you will notice that the first **form steps** has no parameters defined.
+* Your task is to replace the placeholder **Add form parameters here** with two new parameter definitions:
+. **component_id** with the title **Name**, a type of **string**, and a maximum character limit of 20.
+. **description** with the title **Description** and a type of **string**.
+* After completing these additions, you can test the new form parameters by loading the template in the **Template Editor** and running the template in **dry-run** mode.
+
+[source,yaml]
+----
+parameters:
+    - title: Provide new component details
+      required:
+        - component_id
+      properties:
+        # Add form parameters here
+    - title: Application repository Information
+      required:
+        - repo
+      properties:
+        repo:
+          title: Repository Location
+          type: object
+          properties:
+            host:
+              title: Repo Host
+              type: string
+              description: Your SCM host
+              default: {{ gitlab_host }}
+              enum:
+                - {{ gitlab_host }}
+            owner:
+              title: Repo Owner
+              type: string
+              description: Your SCM host organization/group
+              default: {{ gitlab_destination_group }}
+              enum:
+                - {{ gitlab_destination_group }}
+----
+
+=== Template Steps
+
+* The section defines the steps to be performed by this template.
+* Running this template will execute the following steps:
+. Fetch the config-info file from Gitlab using the *fetch:template* action.
+. Publish a new repo for your component in Gitlab using the *publish:gitlab* action.
+. Register the new component in the RHDH Catalog using the *catalog:register* action.
+* In the following YAML source, review the **catalog:register** action, one of the input parameters, **repoContentsUrl**, is only partially defined.
+* The value of *repoContentsUrl* is sourced from the **publish:gitlab** action's output, as indicated in the commented part **steps.publish.output.REPLACE_ME**.
+* The **Scaffolder** templating engine will automatically replace variables in curly braces with their actual values.
+* Remember that you can explore available actions by clicking on the *Kebab* menu at the top right of the *Create Content* page and then selecting *Installed Actions*.
+* In this page you can search for *publish:gitlab*.
+Your task is to identify the output variable from **publish:gitlab** that provides **A URL to the root of the repository** and replace text **REPLACE_ME** with the appropriate output parameter name.
+
+[source,yaml]
+----
+steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutTemplating:
+          - .github/workflows/*
+        values:
+          component_id: {{ '${{ parameters.component_id }}' }}
+          description: {{ '${{ parameters.description }}' }}
+          owner: {{ '${{ user.entity.metadata.name }}' }}
+          host: {{ '${{ parameters.repo.host }}' }}
+          destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
+          
+    - id: publish
+      name: Publish
+      action: publish:gitlab
+      input:
+        repoUrl: "{{ '${{ parameters.repo.host }}' }}?owner={{ '${{ parameters.repo.owner }}' }}&repo={{ '${{parameters.component_id}}' }}"
+        repoVisibility: public
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        # repoContentsUrl: {{ '${{ steps.publish.output.REPLACE_ME }}' }}
+        catalogInfoPath: "/catalog-info.yaml"  
+----
+
+
+=== Template Output
+
+* The output section displays results to the user, based on the output from the executed actions.
+* This template displays two outputs:
+. The URL of the source code repository.
+. A link to the newly created entity in the RHDH Catalog
+
+image::bonus_lab_output.png[]
+
+* In the following YAML source, the output parameter **entityRef** is not fully defined yet.
+* It expects a value from the **catalog:register** action's output.
+* Your task is to find the output variable from **catalog:register** that provides **entityRef** and substitute the text **REPLACE_ME** with the correct output parameter name.
+
+[source,yaml]
+----
+  output:
+    links:
+      - title: Source Code Repository
+        url: {{ '${{ steps.publish.output.remoteUrl }}' }}
+      - title: Open Component in catalog
+        icon: catalog
+        #entityRef: {{ '${{ steps.register.output.REPLACE_ME }}' }}
+----
+
 
 TIP: The solution to the Bonus lab can be found in the folder where you cloned the software templates repo under the path *scaffolder-templates/register-component*
 
+---
 
+=== Workshop Summary
+
+In this workshop, you explored the key features of the **Red Hat Developer Hub** (**RHDH**), focusing particularly on the creation and application of Golden Path Templates. You learned how to define these templates using YAML files and how the *RHDH* Scaffolder processes them. 
+
+Now, equipped with this knowledge, you are prepared to harness the full potential of the Red Hat Developer Hub in your future endeavors.
+
+To learn more about **Red Hat Developer Hub**, and how to install and configure **RHDH** on a **Developer Sandbox** for **Red Hat OpenShift**, check out this comprehensive link:https://developers.redhat.com/learn/openshift/install-and-configure-red-hat-developer-hub-and-explore-templating-basics[learning Path,window=_blank]. This is an ideal resource for those looking to dive deeper into **RHDH** features and capabilities at their own pace.
