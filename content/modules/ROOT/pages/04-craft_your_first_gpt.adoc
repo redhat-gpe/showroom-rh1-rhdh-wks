@@ -396,9 +396,9 @@ parameters:
               title: Repo Host
               type: string
               description: Your SCM host
-              default: { gitlab_url}
+              default: gitlab-gitlab.{openshift_cluster_ingress_domain}
               enum:
-                - {gitlab_url}
+                - gitlab-gitlab.{openshift_cluster_ingress_domain}
             owner:
               title: Repo Owner
               type: string
