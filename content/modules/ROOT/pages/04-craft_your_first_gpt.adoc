@@ -473,10 +473,10 @@ image::bonus_lab_output.png[]
   output:
     links:
       - title: Source Code Repository
-        url: {{ '${{ steps.publish.output.remoteUrl }}' }}
+        url: '${{ steps.publish.output.remoteUrl }}'
       - title: Open Component in catalog
         icon: catalog
-        #entityRef: {{ '${{ steps.register.output.REPLACE_ME }}' }}
+        #entityRef: '${{ steps.register.output.REPLACE_ME }}'
 ----
 
 
