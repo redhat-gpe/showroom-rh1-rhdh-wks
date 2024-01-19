@@ -396,16 +396,16 @@ parameters:
               title: Repo Host
               type: string
               description: Your SCM host
-              default: {{ gitlab_host }}
+              default: { gitlab_url}
               enum:
-                - {{ gitlab_host }}
+                - {gitlab_url}
             owner:
               title: Repo Owner
               type: string
               description: Your SCM host organization/group
-              default: {{ gitlab_destination_group }}
+              default: development
               enum:
-                - {{ gitlab_destination_group }}
+                - development
 ----
 
 === Template Steps
@@ -433,24 +433,24 @@ steps:
         copyWithoutTemplating:
           - .github/workflows/*
         values:
-          component_id: {{ '${{ parameters.component_id }}' }}
-          description: {{ '${{ parameters.description }}' }}
-          owner: {{ '${{ user.entity.metadata.name }}' }}
-          host: {{ '${{ parameters.repo.host }}' }}
-          destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
+          component_id: '${{ parameters.component_id }}'
+          description: '${{ parameters.description }}'
+          owner: '${{ user.entity.metadata.name }}'
+          host: '${{ parameters.repo.host }}'
+          destination: '${{ parameters.repo.owner }}'/'${{ parameters.component_id }}'
           
     - id: publish
       name: Publish
       action: publish:gitlab
       input:
-        repoUrl: "{{ '${{ parameters.repo.host }}' }}?owner={{ '${{ parameters.repo.owner }}' }}&repo={{ '${{parameters.component_id}}' }}"
+        repoUrl: '"${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"'
         repoVisibility: public
 
     - id: register
       name: Register
       action: catalog:register
       input:
-        # repoContentsUrl: {{ '${{ steps.publish.output.REPLACE_ME }}' }}
+        # repoContentsUrl: '${{ steps.publish.output.REPLACE_ME }}'
         catalogInfoPath: "/catalog-info.yaml"  
 ----
 
