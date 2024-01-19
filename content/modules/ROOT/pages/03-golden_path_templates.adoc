@@ -335,7 +335,7 @@ image::Updated_Docs.png[]
 
 === Section Summary
 
-* In this section we witnessed the transformative impact of Red Hat Developer Hub (RHDH) on the developer experience.
-* We saw how Golden Path Templates streamline project onboarding, align development with organizational standards, and integrate various tools for a seamless workflow.
-* RHDH addresses common challenges in software development, transforming complex and disjointed environments into intuitive and efficient interfaces, thereby enhancing productivity and fostering a more satisfying development process.
-* Happy developers make happy code!
+* In this section, we explored the role of **Golden Path Templates** in enhancing the developer experience. 
+* We saw how these templates significantly streamline project onboarding and provide a structured, repeatable process for creating new software components, all while adhering to governance standards established by the platform engineering team. 
+* In the next section we will explore together how to craft a **Golden Path Template**.
+
