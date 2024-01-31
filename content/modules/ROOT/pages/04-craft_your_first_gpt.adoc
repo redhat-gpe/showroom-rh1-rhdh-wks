@@ -232,9 +232,7 @@ image::Form-Preview.png[]
 * You'll see the results of running the template in dry-run mode.
 * Toggle between the *log* and *output* tabs to see the results.
 
-
 image::Template_Results.png[]
-
 
 ---
 
@@ -272,7 +270,6 @@ parameters:
 * RHDH includes built-in UI fields designed to make it easier for users to input valid values.
 * For this requirement we can use the *Owner Picker*, which returns a selection of both groups and users registered in the *RHDH* Catalog.
 * We can implement a filter so that the OwnerPicker would shows only entities of kind *group*, as shown in the following yaml structure.
-
 
 [source,yaml]
 ----
@@ -454,7 +451,6 @@ steps:
         catalogInfoPath: "/catalog-info.yaml"
 ----
 
-
 === Template Output
 
 * The output section displays results to the user, based on the output from the executed actions.
@@ -478,7 +474,6 @@ image::bonus_lab_output.png[]
         icon: catalog
         #entityRef: '${{ steps.register.output.REPLACE_ME }}'
 ----
-
 
 TIP: The solution to the Bonus lab can be found in the folder where you cloned the software templates repo under the path *scaffolder-templates/register-component*
 
