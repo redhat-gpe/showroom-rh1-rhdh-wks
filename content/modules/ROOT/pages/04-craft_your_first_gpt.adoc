@@ -376,7 +376,7 @@ spec:
 . **description** with the title **Description** and a type of **string**.
 * After completing these additions, you can test the new form parameters by loading the template in the **Template Editor** and running the template in **dry-run** mode.
 
-[source,yaml,subs="attributes"]
+[source,yaml,subs="attributes",role="execute"]
 ----
 parameters:
     - title: Provide new component details
@@ -422,7 +422,7 @@ parameters:
 * In this page you can search for *publish:gitlab*.
 Your task is to identify the output variable from **publish:gitlab** that provides **A URL to the root of the repository** and replace text **REPLACE_ME** with the appropriate output parameter name.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
 steps:
     - id: template
@@ -468,7 +468,7 @@ image::bonus_lab_output.png[]
 * It expects a value from the **catalog:register** action's output.
 * Your task is to find the output variable from **catalog:register** that provides **entityRef** and substitute the text **REPLACE_ME** with the correct output parameter name.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
   output:
     links:
