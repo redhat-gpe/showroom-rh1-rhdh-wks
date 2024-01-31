@@ -1,11 +1,11 @@
 site:
-  title: "From Development to Deployment: Securing The Software Supply Chain with Red Hat OpenShift"
+  title: "Supercharge Developer Experience with Red Hat Developer Hub"
   url: https://redhat-scholars.github.io/course-template
   start_page: modules::index.adoc
 
 ui:
   bundle:
-    url: https://github.com/rhpds/showroom_theme_rh1/releases/download/v0.0.2/ui-bundle.zip
+    url: https://github.com/rhpds/showroom_theme_rh1/releases/download/v0.0.4/ui-bundle.zip
     snapshot: true
   supplemental_files:
     - path: ./content/supplemental-ui
