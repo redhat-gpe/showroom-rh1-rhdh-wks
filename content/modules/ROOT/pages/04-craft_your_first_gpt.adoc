@@ -303,7 +303,7 @@ parameters:
 * The *maxLength* option can be used to limit the maximum length of name to 5.
 * Finally, we can also provide hints to guide the user in understanding these rules, as shown in the following yaml structure.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
 parameters:
     - title: Enter the values for name and greeter
