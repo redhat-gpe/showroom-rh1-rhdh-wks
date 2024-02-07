@@ -1,7 +1,7 @@
 == Craft your first Golden Path Template
 
 * In the previous lab, you witnessed a *Golden Path Template* in action.
-* We explained that a *Golden Path Template* is defined using a YAML file. 
+* We explained that a *Golden Path Template* is defined using a YAML file.
 * This file is processed by the *Scaffolder*, *RHDH*'s templating engine, which executes the steps outlined in the template.
 * This lab will guide you through creating your very first *Golden Path Template*.
 
@@ -22,7 +22,7 @@ metadata:
 spec:
   owner: rhdh
   type: service
-  
+
   parameters:
     - title: Enter the name you'd like to greet.
       required:
@@ -37,15 +37,15 @@ spec:
       properties:
         greeter:
           type: string
-          default: RHDH     
-  
+          default: RHDH
+
   steps:
     - id: log-message
       name: Log Message
       action: debug:log
       input:
         message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'
-  
+
   output:
     message: 'The parameters you provided are: ${{ parameters.name }} and ${{ parameters.greeter }}'
 ----
@@ -58,7 +58,7 @@ spec:
 
 ---
 
-=== Template Header 
+=== Template Header
 
 * The header section is mandatory for every template.
 * The *Component* card on the *Create Component* page is displayed based on the details in the Header section.
@@ -98,9 +98,9 @@ image::Component_Card.png[]
 
 ---
 
-===  Template Parameters 
+===  Template Parameters
 
-* Within the template, the parameters property is used to generate the form. 
+* Within the template, the parameters property is used to generate the form.
 * You can choose to break up the parameter prompting into *form steps* or collect all the parameters in a single step.
 * For example in our *Hello World* template, we defined two steps, one to input the *name* and another to input the *greeter* as follows:
 
@@ -120,7 +120,7 @@ parameters:
       properties:
         greeter:
           type: string
-          default: RHDH    
+          default: RHDH
 ----
 
 * In other words the parameters property is an array of objects, each entry in the array is a *form step*.
@@ -145,7 +145,7 @@ steps:
       name: Log Message
       action: debug:log
       input:
-        message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'   
+        message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'
 ----
 
 * To see the available actions in *RHDH* and understand their usage, go to the *Create Content* page by selecting *Create* from the left sidebar menu.
@@ -201,14 +201,14 @@ output:
 
 * First clone the repo that hosts the software templates to your local drive by executing the following command in a local terminal on your laptop:
 
-[source,bash,subs="attributes+"]
+[source,bash,subs="attributes+",role="execute"]
 ----
 git clone {gitlab_url}/rhdh/rh1-software-templates.git
 ----
 
-* *RHDH* ships with a convenient *Template Editor* tool that lets you preview and try out templates. 
-* To access the *Template Editor* navigate to the *Create Content* page by clicking on *Create* in the left sidebar menu. 
-* Then expand the *Kebab menu* on the upper right of the *Create Content* page and click on *Template Editor*. 
+* *RHDH* ships with a convenient *Template Editor* tool that lets you preview and try out templates.
+* To access the *Template Editor* navigate to the *Create Content* page by clicking on *Create* in the left sidebar menu.
+* Then expand the *Kebab menu* on the upper right of the *Create Content* page and click on *Template Editor*.
 
 image::template_editor.png[]
 
@@ -232,9 +232,7 @@ image::Form-Preview.png[]
 * You'll see the results of running the template in dry-run mode.
 * Toggle between the *log* and *output* tabs to see the results.
 
-
 image::Template_Results.png[]
-
 
 ---
 
@@ -249,7 +247,7 @@ image::Template_Results.png[]
 
 === Requirement 1: Merge into a single form
 
-* To include both *name* and *greeter* in a single form, we will move all the attributes of the *greeter* property to the first *form step*, similar to the yaml structure shown below. 
+* To include both *name* and *greeter* in a single form, we will move all the attributes of the *greeter* property to the first *form step*, similar to the yaml structure shown below.
 
 [source,yaml]
 ----
@@ -264,7 +262,7 @@ parameters:
           default: World
         greeter:
           type: string
-          default: RHDH    
+          default: RHDH
 ----
 
 === Requirement 2: Greeter can only be selected from list of groups
@@ -272,7 +270,6 @@ parameters:
 * RHDH includes built-in UI fields designed to make it easier for users to input valid values.
 * For this requirement we can use the *Owner Picker*, which returns a selection of both groups and users registered in the *RHDH* Catalog.
 * We can implement a filter so that the OwnerPicker would shows only entities of kind *group*, as shown in the following yaml structure.
-
 
 [source,yaml]
 ----
@@ -290,7 +287,7 @@ parameters:
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: Group     
+              kind: Group
 ----
 
 === Requirement 3: Name format rules
@@ -298,12 +295,12 @@ parameters:
 * *RHDH* supports the use of regular expressions to ensure that a string conforms to specific rules.
 * For our purpose, we can utilize the regex:: ^[A-Z][A-Za-z0-9_]*$
 . [A-Z] ensures the first character is a capital letter (A to Z).
-. [A-Za-z0-9_] allows any number of alphanumeric characters (both upper and lower case) and underscores after the first character. 
+. [A-Za-z0-9_] allows any number of alphanumeric characters (both upper and lower case) and underscores after the first character.
 . The asterisk means zero or more of the preceding element.
 * The *maxLength* option can be used to limit the maximum length of name to 5.
 * Finally, we can also provide hints to guide the user in understanding these rules, as shown in the following yaml structure.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
 parameters:
     - title: Enter the values for name and greeter
@@ -319,10 +316,10 @@ parameters:
           ui:help: 'Hint: name must begin with a capital letter, include only letters (upper or lower case), numbers, or underscores, and the maximum length can only be 5 letters.'
         greeter:
           type: string
-          ui:field: OwnerPicker 
+          ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: Group  
+              kind: Group
 ----
 
 * Go ahead and modify the *Hello World Template* with the new parameters, then reload it to test the changes in parameters and user form.
@@ -334,7 +331,7 @@ parameters:
 * Here is a challenge for you: Apply what you've learned to craft a **Golden Path Template** that creates and registers a new component in the RHDH Catalog.
 * First, get a feel for how this GPT functions by trying it out yourself.
 * Navigate to the **Create View** by clicking **Create** in the left side-menu..
-* Then select the template **Onboard your component to RHDH**. 
+* Then select the template **Onboard your component to RHDH**.
 
 image::bonus_lab_select_template.png[]
 
@@ -346,7 +343,7 @@ image::bonus_lab_form.png[]
 * Your challenge is to fill in these incomplete parts, drawing upon your learning from today's workshop.
 * Find the template in the software templates repository you cloned earlier, under **scaffolder-templates/register-component-lab**, and add the missing parameters using your preferred editor.
 
-=== Template Header 
+=== Template Header
 
 * As discussed in the **Hello World** template, the header determines how the tile for this GPT appears in the **Create View**.
 * This YAML source in this section is just for your understanding, and there is nothing that you need to do here.
@@ -367,7 +364,7 @@ spec:
   type: service
 ----
 
-===  Template Parameters 
+===  Template Parameters
 
 * We now focus on the parameters section of the template. The forms you interacted with when you executed template are based on the parameters defined here.
 * In the YAML source provided hereunder, you will notice that the first **form steps** has no parameters defined.
@@ -376,7 +373,7 @@ spec:
 . **description** with the title **Description** and a type of **string**.
 * After completing these additions, you can test the new form parameters by loading the template in the **Template Editor** and running the template in **dry-run** mode.
 
-[source,yaml,subs="attributes"]
+[source,yaml,subs="attributes",role="execute"]
 ----
 parameters:
     - title: Provide new component details
@@ -422,7 +419,7 @@ parameters:
 * In this page you can search for *publish:gitlab*.
 Your task is to identify the output variable from **publish:gitlab** that provides **A URL to the root of the repository** and replace text **REPLACE_ME** with the appropriate output parameter name.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
 steps:
     - id: template
@@ -438,7 +435,7 @@ steps:
           owner: '${{ user.entity.metadata.name }}'
           host: '${{ parameters.repo.host }}'
           destination: '${{ parameters.repo.owner }}'/'${{ parameters.component_id }}'
-          
+
     - id: publish
       name: Publish
       action: publish:gitlab
@@ -451,9 +448,8 @@ steps:
       action: catalog:register
       input:
         # repoContentsUrl: '${{ steps.publish.output.REPLACE_ME }}'
-        catalogInfoPath: "/catalog-info.yaml"  
+        catalogInfoPath: "/catalog-info.yaml"
 ----
-
 
 === Template Output
 
@@ -468,7 +464,7 @@ image::bonus_lab_output.png[]
 * It expects a value from the **catalog:register** action's output.
 * Your task is to find the output variable from **catalog:register** that provides **entityRef** and substitute the text **REPLACE_ME** with the correct output parameter name.
 
-[source,yaml]
+[source,yaml,role="execute"]
 ----
   output:
     links:
@@ -479,14 +475,13 @@ image::bonus_lab_output.png[]
         #entityRef: '${{ steps.register.output.REPLACE_ME }}'
 ----
 
-
 TIP: The solution to the Bonus lab can be found in the folder where you cloned the software templates repo under the path *scaffolder-templates/register-component*
 
 ---
 
 === Workshop Summary
 
-In this workshop, you explored the key features of the **Red Hat Developer Hub** (**RHDH**), focusing particularly on the creation and application of Golden Path Templates. You learned how to define these templates using YAML files and how the *RHDH* Scaffolder processes them. 
+In this workshop, you explored the key features of the **Red Hat Developer Hub** (**RHDH**), focusing particularly on the creation and application of Golden Path Templates. You learned how to define these templates using YAML files and how the *RHDH* Scaffolder processes them.
 
 Now, equipped with this knowledge, you are prepared to harness the full potential of the Red Hat Developer Hub in your future endeavors.
 

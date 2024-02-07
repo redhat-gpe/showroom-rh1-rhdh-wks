@@ -100,7 +100,7 @@ image::RHDH_Dashboard.png[]
 
 . Choose to *login with OpenShift*
 . Select *login with rhsso*
-. Then enter your OpenShift credentials with user `{openshift_admin_user}` and password `{openshift_admin_password}`
+. Then enter your OpenShift credentials with user `user1` and password `{common_password}`
 . Authorize *OpenShift Dev Spaces* to access your account by clicking the *Allow selected permissions* button.
 . You'll then be prompted to sign into *GitLab*. Click the *Sign in* button to proceed.
 . Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button.
@@ -119,7 +119,7 @@ image::TechDocs_Link.png[]
 === Docs tab
 
 * Here you can see the technical documentation for the *my-quarkus-app* component.
-* *RHDH* follows a **doc-like-code* approach as explained in the previous section.
+* *RHDH* follows a *doc-like-code* approach as explained in the previous section.
 * The documentation is written in *Markdown* format and hosted in the same Git repository as the component source code.
 * The *Docs* tab displays the documentation in *HTML* format, which has been generated and published as part of the execution of our *Golden Path Template*.
 
@@ -212,7 +212,7 @@ image::Catalog_View_From_Ownership_Link.png[]
 * Hover over the Pod to reveal an *ErrImagePull* error.
 * When you click on the Pod, a side pane slides in from the right to show more details.
 * Switch to the *Resources* tab to dig deeper into this error.
-* You'll see an ImagePullBack error which could be the result of a missing image in the Image Registry. 
+* You'll see an ImagePullBack error which could be the result of a missing image in the Image Registry.
 * To confirm this, let's proceed to the *Image Registry* view by selecting it from the upper menu.
 
 image::Topology_View.png[]
@@ -335,7 +335,6 @@ image::Updated_Docs.png[]
 
 === Section Summary
 
-* In this section, we explored the role of **Golden Path Templates** in enhancing the developer experience. 
-* We saw how these templates significantly streamline project onboarding and provide a structured, repeatable process for creating new software components, all while adhering to governance standards established by the platform engineering team. 
+* In this section, we explored the role of **Golden Path Templates** in enhancing the developer experience.
+* We saw how these templates significantly streamline project onboarding and provide a structured, repeatable process for creating new software components, all while adhering to governance standards established by the platform engineering team.
 * In the next section we will explore together how to craft a **Golden Path Template**.
-
