@@ -1,22 +1,29 @@
-== Introduction
+== Introduction to the Hackathon
 
-=== A Day in the Life of a Developer
+=== Overview
 
-Imagine you've just joined a new organization as a developer, excited and eager to make your mark. Your enthusiasm, however, is quickly dampened by the reality of disjointed systems and scattered information. You're assigned to update a service, but locating the relevant repository and documentation becomes a time-consuming challenge due to poor organization and outdated references.
+Welcome to the **Red Hat Developer Hub Enablement Day Hackathon**! Today, you'll step into the shoes of a Red Hat expert tasked with supporting one of our valued customers, Globex Corp. The objective is to enable Globex Corp to seamlessly integrate and utilise the powerful capabilities of the **Red Hat Developer Hub (RHDH)**. 
 
-Setting up your local development environment doesn't go much better, with fragmented instructions that don't match the current technology stack. Slack messages with conflicting guidance add to the confusion, leading to a slow and frustrating start.
 
-By the end of the day, you've managed a meager commit, your initial excitement replaced with a sense of frustration. This isn't the developer experience you signed up for. It's clear that without a unified system to streamline these processes, your talents are underutilized, bogged down by the very infrastructure that's supposed to support your work.
-
-image::dev_challenges.png[]
+image::globex-corp.png[]
 
 '''
 
-=== Red Hat Developer Hub (RHDH) to the rescue
+=== Challenge 1: Setting up the RHDH Operator
 
-Step into the world of the link:https://developers.redhat.com/rhdh[Red Hat Developer Hub,window=_blank] (RHDH), where the future of cloud-native development unfolds. In this workshop you will learn:
+Your first challenge is to create a new OpenShift project and install the Red Hat Developer Hub operator, setting the stage for a robust development environment.
 
-* The pivotal role of RHDH in a developer's journey, focusing on how it effectively addresses the development challenges we've outlined earlier.
-* An introduction to Golden Path templates and their role in streamlining the developer experience.
+==== Task 1: Creating an OpenShift Project for the RHDH Operator
+
+Globex Corp needs a dedicated space within their OpenShift cluster to house the **RHDH Operator** and its components. 
+
+* Login into your OpenShift cluster.
+* Create an OpenShift project called `rhdh_operator`.
+
+
+==== Task 2: Deploying the RHDH Operator
+
+Now that you have the project in place, it's time to deploy the **RHDH operator** into your newly created `rhdh_operator` project.
+
 
 '''
