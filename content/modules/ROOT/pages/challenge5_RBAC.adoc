@@ -1,0 +1,63 @@
+== Challenge 5: Setup Role Base Access Control (RBAC)
+
+
+* **Hank Scorpio**: "Team it's crucial that not everyone has the same level of access to our catalog. We need to ensure that only authorized users can perform specific actions within the **Red Hat Developer Hub (RHDH)**."
+
+* **You**: "That's a great point, Hank. While authentication providers confirm the identity of the user, authorization—determining what actions an authenticated identity can perform. Authentication in **RHDH** is handled by a  component called Role-Based Access Control (RBAC) using Permission Policies."
+
+* **You**: "Alright JHomer, let’s set up Role-Based Access Control."
+
+**Homer Simpson**: "If we’re picking roles, can I be the ‘Master of Munchies’? Ensuring quality snacks is critical for developer productivity, you know."
+
+=== Task 1: Enable RHDH RBAC:
+
+* **You**: "To begin, we need to declare certain users as policy administrators. This is done by adding the following permission attribute to the `app-config-rhdh` ConfigMap. Make sure to include a valid authenticated user for the `admin.users` attribute. Here’s how you set it up:"
+
+```yaml
+catalog:
+  providers:
+    github:
+      ...
+    githubOrg:
+      ...
+permission:
+  enabled: true
+  rbac:
+    admin:
+      users:
+        - name: user:default/<GitHub User>
+```
+* Replace <GitHub User> with a user from your GitHub Organization.
+
+* **You**: "The user defined here will have administrative rights, authorized to perform any action in **RHDH**, including configuring roles for other users."
+
+* **You**: "The RBAC plugin is disabled by default. To enable it, we need to add it to the list of dynamic plugins in the `dynamic-plugins-rhdh-local` ConfigMap like this:"
+
+```yaml
+...
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+    plugins:
+      - package: './dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic'
+        disabled: false
+      - package: './dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic'
+        disabled: false
+      - package: './dynamic-plugins/dist/janus-idp-backstage-plugin-rbac'
+        disabled: false
+```
+
+* **You**: "Restart the rollout of the **RHDH** pod from the Topology view."
+
+* **You**: "Make sure you sign into RHDH using the **GitHub** ID of another user, not the declared policy administrator. Navigate to the Catalog page in **RHDH**. Note that the 'Create' button is not visible because you are not allowed to create new components. Next, try navigating to the API page. The 'Register' button is not visible. With RBAC enabled, most features are disabled by default, and you need to explicitly enable permissions to resources in RHDH."
+
+* **Homer**: “Wait, so I can’t press all the buttons? But pressing buttons is my favorite part of the day!”*
+
+=== Task 2: Creating Roles from the RBAC Administration UI
+
+* **You**: "Alright Homer, your next task is to grant the second user in the GitHub organization the ability to create, read, and update catalog entities. Let’s navigate to the RBAC Administration UI and set up these permissions."
+
+TIP: You can refer to the RHDH documentation to read more about RBAC in Section 10.3. Managing role-based access controls (RBAC) using the Red Hat Developer Hub Web UI: https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html-single/administration_guide_for_red_hat_developer_hub/index#proc-rbac-ui-manage-roles_assembly-rhdh-integration-aks. 
+
+Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 5 please review." 

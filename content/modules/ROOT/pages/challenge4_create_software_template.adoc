@@ -1,0 +1,176 @@
+== Challenge 4: Creating Your First Software Template
+
+* **Hank Scorpio**: "Well, this is very good, but what about new components? How do we create those?"
+
+* **You**: "The best way to onboard new components to the *Red Hat Developer Hub (RHDH)* is through using **Software Templates**. These templates provide a predefined structure for creating and configuring components automatically, which streamlines the development process and ensures consistency across deployments. They allow developers to quickly spin up new services, tools, or applications in a self-service and automated process."
+
+**Homer**: "Software templates, huh? If only they had one for automating my work so I could take more donut breaks"
+
+**You**: “That would be the dream, **Homer**! Maybe once we master these software templates, we can think about automating some of your less exciting tasks. For now, let’s focus on getting you up to speed with these templates so you can start creating new components like a pro."
+
+=== Understanding the Hello World Template
+
+**You**: "Let’s look at an example to grasp how templates are defined. And what better starting point than the classic Hello World template!"
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: my-first-template
+  title: Hello World
+  description: A simple Hello World example.
+spec:
+  owner: rhdh
+  type: service
+  parameters:
+    - title: Enter the name you'd like to greet.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          default: World
+    - title: Input the name of the greeter.
+      required:
+        - greeter
+      properties:
+        greeter:
+          type: string
+          default: RHDH
+  steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.name }} from ${{ parameters.greeter }}!'
+  output:
+    message: 'The parameters you provided are: ${{ parameters.name }} and ${{ parameters.greeter }}'
+```
+
+* **You**: "I bet you're eager to test this template out and see it in action. First, create a folder on your local drive and save the Hello World template to this folder."
+
+* **You**: "**RHDH** comes equipped with a convenient Template Editor tool that allows you to preview and try out templates directly within the platform. To access the Template Editor, navigate to the Create Content page by clicking on 'Create' in the left sidebar menu. Then, expand the Kebab menu on the upper right of the Create Content page and click on 'Template Editor'."
+
+* **You**: "Select the first option, 'Load Template Directory', then navigate to the path where you created the folder and select it."
+
+* **You**: The Template Editor will then provide a preview of the **Forms** that will be presented to the user. Test the Forms until review the input you provided, then click 'Create'. You'll see the results of running the template in dry-run mode. Toggle between the 'log' and 'output' tabs to see the results."
+
+* **You**: "Ok, now that you've had a quick overview of how it works, let's examine the structure of our template more closely. The template is divided into four sections, each serving a specific function in the creation process."
+
+* **You**: "The *Header* section provides essential information about the template. It's like the cover of a book, giving you a snapshot of what to expect. This includes the name, title, and a brief description that helps users understand the template's purpose at a glance."
+
+* **You**: "The *Parameters* section is where we gather inputs from the user. You can structure this section to break up the parameter prompting into form steps or collect all the parameters in a single step, depending on how you want to guide the user through the input process."
+
+* **You**: "The *Steps* section defines the actions to be executed by the template during its execution. These steps are carried out sequentially as defined in the template and can include tasks like publishing to a Git repository or registering a component in the catalog."
+
+* **You**: "In our *Hello World* template, we've defined a step called *log-message*, which uses the action *debug:log* to display a message. This action simply logs a message based on the parameters provided by the user."
+
+* **You**: "To see the available actions in **RHDH** and understand their usage, you can go to the 'Create Content' page by selecting 'Create' from the left sidebar menu. Then, open the Kebab menu at the top right of the 'Create Content' page and choose 'Installed Actions'. Here you can search for 'debug:log' to learn more about this action, including viewing some examples."
+
+* **You**: "Finally, the *Output* section, though optional, allows you to display results to the user or use the output from executing actions. In our *Hello World* template, we are simply displaying the input that the user provided. It's a straightforward way to provide immediate feedback about what was entered and processed."
+
+=== Task 1: Modify Hello World Template
+
+**You**: "Now that we've got a basic template up and running, let's make make a few modifications. Your challenge is to modify the template based on the following requirements:"
+
+==== Requirement 1: Merge into a Single Form
+
+* **You**: "Instead of asking the user to fill out two separate steps for the name and the greeter, we'll combine these into one. This makes the process smoother and quicker for the user. Here’s how we adjust the template:"
+
+==== Requirement 2: Greeter Can Only Be Selected from List of Groups
+
+* **You**: "To ensure that the greeter is selected from an approved list, we'll use the Owner Picker UI field. This tool allows us to filter selections to include only groups, enhancing both security and relevance."
+
+TIP: Refer to this link to see examples of UI options including the OwnerPicker. https://backstage.io/docs/features/software-templates/ui-options-examples/
+
+==== Requirement 3: Name Format Rules
+
+* **You**: "We'll also set specific rules for how the name should be formatted. It must start with a capital letter, can include letters, numbers, or underscores, and be no longer than 5 characters. These constraints help maintain data quality and consistency."
+
+TIP: Here are some input examples for inspiration: https://backstage.io/docs/features/software-templates/input-examples/
+
+
+=== Task 1: Create your own template
+
+* **You**: "Now apply what you've learned to craft a **Software Template** that creates and registers a new component in the RHDH Catalog. The template designed to facilitate the rapid setup of Single Page Applications (SPAs) using React and Next.js."
+* **You**: "Here are the four sections of this template, but some of them are incomplete. Your challenge is to fill in these incomplete parts, drawing upon your learning  today."
+* **You**: "There are two missing parameters:"
+. **description** with the title **Description** and a type of **string**.
+. **owner** with the title **Owner** and a type of **string**. Use **OwnerPicker** field here and filter by kind **Group**.
+
+* **You**: "Also, one final step is missing which the action needed to register the component to the catalog."
+
+```yaml
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: react-ssr-template
+  title: React/Next.js SSR Template
+  description: Create an SPA powered by Next.js
+  tags:
+    - recommended
+    - react
+    - spa
+spec:
+  owner: myorg-platform-team@example.com
+  type: website
+  parameters:
+    - title: Input Parameters
+      required:
+        - component_id
+        - owner
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+        <Replace with missing parameters>
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: Initial source tree for ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+<Add missing Step Here>
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
+```
+
+
+Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 4 please review."
+
+

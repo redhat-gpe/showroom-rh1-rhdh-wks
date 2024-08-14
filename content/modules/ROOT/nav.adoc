@@ -1,9 +1,12 @@
-* xref:00-agenda.adoc[1. Agenda]
+* xref:introduction.adoc[Introduction]
 
-* xref:01-introduction.adoc[2. Workshop Introduction]
+* xref:challenge1_install_rhdh.adoc[Challenge 1: Install Red Hat Developer Hub]
 
-* xref:02-rhdh_core_features.adoc[3. Red Hat Developer Hub Core Features]
+* xref:challenge2_authentication.adoc[Challenge 2: Setup Authentication]
 
-* xref:03-golden_path_templates.adoc[4. How Golden Path Templates Simplify the Developer Experience]
+* xref:challenge3_populate_catalog.adoc[Challenge 3: Populate the RHDH Catalog ]
 
-* xref:04-craft_your_first_gpt.adoc[5. Craft your first Golden Path Template]
+* xref:challenge4_create_software_template.adoc[Challenge 4: Craft your first Software Template]
+
+* xref:challenge5_RBAC.adoc[Challenge 5: Setup RBAC]
+

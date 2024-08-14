@@ -1,0 +1,56 @@
+
+== Challenge 1: Deploy Red Hat Developer Hub
+
+* **Hank Scorpio**: “Alright team, listen up! We’re about to embark on an exciting journey to transform our development operations with the **Red Hat Developer Hub**. Homer, I need you to focus and follow our Red Hat expert’s guidance. Let’s get this project rolling!”
+
+* **Homer**: “Mmm… Developer Hub… Wait, what’s a Developer Hub again? Oh well, as long as there’s doughnuts involved, I’m in!”
+
+* **You**: “Great enthusiasm, Homer! Let’s dive into our first challenge. We need to create an OpenShift project called **rhdh** and install the RHDH operator.”
+
+=== Task 1: Creating an OpenShift Project
+
+**Globex Corp** needs a dedicated space within their **OpenShift** cluster to house the **Red Hat Developer Hub (RHDH)** and its components. 
+
+* **Homer**: “Uh, okay. So I need to create a new project? I can do that. Wait, can I name it doughnuts?”
+
+image::homer_donuts.png[]
+
+* **You**: “Focus, Homer. We’ll stick with the name **rhdh**. Here are the login details you’ll need:”
+
+** *OpenShift Console URL:* {openshift_console_url}
+** *OpenShift Admin User* {openshift_admin_user}
+** *OpenShift Admin Password* {openshift_admin_password}
+
+* **You**: "After you log-in, create an **OpenShift** project called `rhdh`.""
+
+TIP: In case you are lost, check the link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.15/html/building_applications/projects#working-with-projects[OpenShift documentation,window=_blank] on how to create a new project. You can refer to section 2.1.1.1, “Creating a project by using the web console”.
+
+=== Task 2: Deploying the Red Hat Developer Hub Operator
+
+* **You**: "Now that you have the project in place, it's time to deploy the **Red Hat Developer Hub Operator**."
+* **Homer**: “Operator? Like someone who answers phones? I can do that! Wait, no, I can’t. What does this operator do again?”
+* **You**: “The **Red Hat Developer Hub Operator** manages the lifecycle of our **RHDH** components. You’ll need to navigate to the **OperatorHub** in the **OpenShift** web console, and install **Red Hat Developer Hub Operator**.”
+
+TIP: If you get stuck, Refer to the documentation, link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html-single/installing_red_hat_developer_hub_on_openshift_container_platform/index#proc-install-operator_assembly-install-rhdh-ocp-operator[“1.1.1. Installing the Red Hat Developer Hub Operator”,window=_blank].
+
+=== Task 3: Deploy Red Hat Developer Hub using the Operator
+
+* **Hank Scorpio**: “Now that the groundwork is laid, it’s time to bring the whole system online. Let's deploy the Hub!"
+* **Homer**: “Deploying, huh? That sounds serious. Do I need to push a big red button or something?”
+* **You**: “Not quite, Homer. You’ll need to create an instance of **Red Hat Developer Hub** using the **Red Hat Developer Hub Operator** you just installed. Name your instance `rhdh` and make sure it is deployed to the correct namespace name, `rhdh`.”
+
+TIP: If you need additional guidance, refer to the documentation section link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.1/html/administration_guide_for_red_hat_developer_hub/assembly-install-rhdh-ocp#proc-install-rhdh-ocp-operator_admin-rhdh[2.2. Deploying Red Hat Developer Hub on OpenShift Container Platform using the Operator,window=_blank].
+
+**You**: "Switch to the topology view of the `rhdh` project. If all goes well, after a few minutes, you'll see both the pods, **backstage-rhdh** and **backstage-psql-rhdh** running."
+
+image::rhdh_topology_view.png[]
+
+* **You**: "Find the route for your **RHDH** instance and keep it handy as we will use it in the coming steps to configure **RHDH**. Now click on the route to navigate to the **RHDH Authentication Page**."
+
+image::rhdh_authentication.png[]
+
+* **You**: "You'll see two options on the authentication page: one is to use **GitHub**, which will fail because we have not configured authentication through **GitHub** yet, and the other is to use a **Guest** account. This is highly not desired by **Globex Corp** as they want only authorized users to access the **Red Hat Developer Hub**."
+
+Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 1, please review."
+
+'''

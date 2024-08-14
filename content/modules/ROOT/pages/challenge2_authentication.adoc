@@ -1,0 +1,176 @@
+== Challenge 2: Setup Authentication 
+
+* **Hank Scorpio**: "Having this guest access does not work for me, I need you to set up proper authentication worthy of the **Globex Corp**!”
+
+* **You**: "Not to worry. **The Red Hat Developer Hub (RHDH)** relies on Authentication Providers to manage access. These providers help us retrieve identity and user details, enabling us to assign specific access rights across different services within **RHDH**. **RHDH** is compatible with several well-known authentication providers, including **GitHub**, **GitLab**, **Auth0**, and **Okta**. 
+
+* **You**: "**Homer**, let’s go ahead and set up authentication using **GitHub**. Configuring GitHub for **RHDH** authentication involves two steps:""
+
+. Creating a new **GitHub App** for your **GitHub organization**.
+. Configure **RHDH** to use the **GitHub App** for authentication.
+
+=== Task 1: Create a GitHub Application
+
+* **You**: "The first step is to create a new **GitHub Organization** and name it **<your_team_name>-org**. Then invite members of the PoC team to join **GitHub Organization**."
+
+NOTE: There should be at least two members in the organization.
+
+image::org_team_example.png[]
+
+* **You**: "Then, create a new **GitHub Application**, navigate to [GitHub App Settings]: https://github.com/organizations/<YOUR_ORGANIZATION>/settings/apps "
+
+* **You**: “On the 'Register new GitHub App' page, fill out the following details:
+
+** **GitHub App name**: `rhdh-app-<your_team_name>` 
+** **Homepage URL**: `<Your RHDH Route URL>`
+** **Callback URL**: `<Your RHDH Route URL>api/auth/github/handler/frame`
+** **Webhook URL**: `<Your RHDH Route URL>`
+** **Webhook secret**: `7opS3cr3tK3y` 
+
+* **You**: “Expand Repository Permissions, and toggle **Read and Write** permissions for the following:
+
+** Administration
+** Commit statuses
+** Contents
+** Dependabot alerts
+** Deployments
+** Pull Requests
+** Webhooks
+
+* "Under Organization permissions, ensure that you toggle Read-only permissions for Members so that RHDH can import team and user information from GitHub.”
+
+* “Click 'Create GitHub App'. You will be shown your App ID and a client ID. Make note of these values for the next step.”
+
+* “Click 'Generate a new client secret'. Copy the generated secret for the next steps.”
+
+* “Scroll down to the Private Keys section and click 'Generate a private key'. The private key will be downloaded. Copy the generated private key certificate (it is in PEM format) to a safe location.”
+
+* “In the left sidebar menu of the generated app, select 'Install App', and then click 'Install'. Click 'Install' on the next screen as well.”
+
+**TIP**: Lost? Follow the instructions in this guide: link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.1/html/getting_started_with_red_hat_developer_hub/assembly-auth-provider-github#proc-registering-github-app[Setting Up GitHub as Authentication Provider,window=_blank]
+
+
+=== Task 2: Configure RHDH to Use the GitHub App for Authentication
+
+**You**: "Excellent with the **GitHub Application** ready, It's time to configure **Red Hat Developer Hub (RHDH)**. **RHDH** configuration exists as **YAML** files, which are saved within **ConfigMaps** in **OpenShift**."
+
+**Homer**: "D'oh! We have to follow a map!"
+
+image::homer_doh.png[]
+
+**You**: "Good one, Homer! But not exactly, **ConfigMaps** in **OpenShift** are used to store configuration data in key-value pairs. This data can be consumed by pods within the cluster. They are particularly useful for separating configuration from the application code, which makes managing and updating configurations much simpler and more efficient."
+
+==== Step 1: Create a Custom Configuration File for RHDH
+
+"The `default.app-config.yaml` is used to configure the overall configuration of **RHDH**. The `default.app-config.yaml` configuration is stored in the `backstage-appconfig-rhdh` ConfigMap is as follows:
+
+[source,yaml]
+----
+data:
+  default.app-config.yaml: |
+    backend:
+      auth:
+        keys:
+          # This is a default value, which you should change by providing your own app-config
+          - secret: "pl4s3Ch4ng3M3"
+----
+
+* **You**: "The `default.app-config.yaml` file should not be edited directly to avoid problems during operator upgrades. Instead, you must define your own custom `app-config-rhdh.yaml` configuration file as a separate ConfigMap resource, and override the default configuration values."
+
+* **You**: "Create a new ConfigMap named `app-config-rhdh` in the project `rhdh` using the following YAML snippet":
+
+[source,yaml]
+----
+kind: ConfigMap
+apiVersion: v1
+metadata:
+ name: app-config-rhdh
+data:
+ "app-config-rhdh.yaml": |
+   app:
+     title: Red Hat Developer Hub
+     baseUrl: <your rhdh route>
+   backend:
+     auth:
+       keys:
+         - secret: "${BACKEND_SECRET}"
+     baseUrl: <your rhdh route>
+     cors:
+       origin: <your rhdh route>
+   auth:
+     environment: production
+     providers:
+       github:
+         production:
+           clientId: ${GITHUB_APP_CLIENT_ID}
+           clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+   signInPage: github
+----
+
+"Where it says `<your RHDH route>` replace with your **Red Hat Developer Hub** route."
+
+==== Step 2: Create the Backend Secret
+
+"Homer Simpson: What's this `${BACKEND_SECRET}`? Is it a secret agent code?"
+
+"You: Good catch, **Homer**. **Secrets** are used instead of plain text in **ConfigMaps** to enhance security. This is where we will store our Backend secret and **GitHub** credentials. Create a key/value secret named `rhdh-secrets`."
+
+"Enter `BACKEND_SECRET` in the Key field, while for the Value field open a new command line terminal and generate a base64 encoded string using the following command:
+[source,bash]
+----
+$ node -p 'require("crypto").randomBytes(24).toString("base64")'
+----
+
+"Copy the randomly generated string to the Value field, and then click **Add Key/Value** to add two more Key/Value pairs as follows:
+[cols="1,1"]
+|===
+|**Key**
+|**Value**
+
+|GITHUB_APP_CLIENT_ID
+|<The GitHub APP Client ID you copied earlier>
+
+|GITHUB_APP_CLIENT_SECRET
+|<The GitHub APP Client Secret you copied earlier>
+|===
+
+=== Step 3: Reference the Custom Configuration File in RHDH
+
+* **Homer**: "All this just to log in? Can't we just knock on the door and ask nicely?"
+
+* **You**: "I wish it were that simple, **Homer**. Now that you have created your own custom configuration files, you need to reference it in the **Red Hat Developer Hub (RHDH)** custom resource (CR). Click on **Topology** in the left sidebar, and then expand the hamburger menu (three vertical dots) next to the `rhdh` instance to select the 'Edit Backstage' option."
+
+* **You**: "Add a reference to the `app-config-rhdh` ConfigMap and the `rhdh-secrets` secret in the **spec** section:"
+[source,yaml]
+----
+apiVersion: rhdh.redhat.com/v1alpha1
+kind: Backstage
+metadata:
+...
+spec:
+  application:
+    appConfig:
+      mountPath: /opt/app-root/src
+      configMaps:
+         - name: app-config-rhdh
+    extraEnvs:
+      secrets:
+         - name: rhdh-secrets
+    extraFiles:
+      mountPath: /opt/app-root/src
+    replicas: 1
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true
+----
+
+**You**: "Click 'Save' to save your changes. Now, you need to restart the **RHDH** pod for the changes to take effect. In the **Topology** view, expand the menu next to the `backstage-rhdh` pod and click **Restart rollout** to restart the **RHDH** pod."
+
+**You**: "After the pod restarts, navigate to the **RHDH** URL. This time, the **Authentication** page will only display **GitHub** as an option for authentication. Go ahead and click **Sign in**. You should now see the **Homepage** for the **Red Hat Developer Hub**. "
+
+image::rhdh_github_authentication.png[]
+
+Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 2, please review."
+'''
+
