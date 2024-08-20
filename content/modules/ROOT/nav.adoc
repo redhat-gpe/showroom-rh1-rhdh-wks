@@ -1,5 +1,3 @@
-* xref:introduction.adoc[Introduction]
-
 * xref:challenge1_install_rhdh.adoc[Challenge 1: Install Red Hat Developer Hub]
 
 * xref:challenge2_authentication.adoc[Challenge 2: Setup Authentication]

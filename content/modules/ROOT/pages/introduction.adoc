@@ -19,6 +19,6 @@ The Hackathon is broken down into challenges:
 * **Challenge 1**: Install the Red Hat Developer Hub.
 * **Challenge 2**: Setup Authentication.
 * **Challenge 3**: Populating the Catalog.
-* **Challenge 4**: Creating your First Software Template
-* **Challenge 5**: Setup Role Base Access Control
-'''
+* **Challenge 4**: Creating your First Software Template.
+* **Challenge 5**: Setup Role Base Access Control.
+
