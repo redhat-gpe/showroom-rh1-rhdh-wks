@@ -9,6 +9,8 @@
 . Creating a new **GitHub App** for your **GitHub organization**.
 . Configure **RHDH** to use the **GitHub App** for authentication.
 
+---
+
 === Task 1: Create a GitHub Application
 
 * **You**: "The first step is to create a new **GitHub Organization** and name it **<your_team_name>-org**. Then invite members of the PoC team to join **GitHub Organization**."

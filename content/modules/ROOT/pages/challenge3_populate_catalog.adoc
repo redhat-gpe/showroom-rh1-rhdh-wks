@@ -10,11 +10,15 @@
 . Manual Registration of Software Components
 . Autodiscovery of Software Components
 
+---
+
 === Task 1: Manual Registration of Components
 
 * **You**: "You can manually add components to the **Catalog** by clicking **Create** in the **RHDH** left navigation sidebar and then clicking **Register Existing Component**."
 
-* **You**: "You will then be prompted to enter a remote URL that locates the YAML file declaring the details of the new component. Use this URL: `https://github.com/relessawy/backstage_entity_examples/blob/main/catalog-info.yaml`. Click **Analyze**. Finally, click **Import**. RHDH will then fetch the YAML file, parse it, and populate the **Catalog**."
+* **You**: "You will then be prompted to enter a remote URL that locates the YAML file declaring the details of the new component. Use this URL: `https://github.com/relessawy/backstage_entity_examples/blob/main/catalog-info.yaml`. Click **Analyze**."
+
+* **You**: "Finally, click **Import**. **RHDH** will then fetch the YAML file, parse it, and populate the **Catalog**."
 
 image::manually_register_component.png[]
 
@@ -22,9 +26,9 @@ image::manually_register_component.png[]
 
 * **You**: "To understand how **RHDH** models software components, click on **View graph** located at the bottom of the Relations panel. Let’s adjust a few filter conditions to make the diagram more clear:"
 
-** In the Relations section, deselect both 'ownerof' and 'ownedby' options.
-** Choose 'Top to Bottom' from the Direction dropdown.
-** Finally, toggle off the 'Simplified' option.
+** In the Relations section, deselect both `ownerof` and `ownedby` options.
+** Choose `Top to Bottom` from the Direction dropdown.
+** Finally, toggle off the `Simplified` option.
 ** Your graph will now look like the following screenshot.
 
 image::dependency_diagram.png[]
@@ -36,7 +40,7 @@ image::dependency_diagram.png[]
 ** *Resource*: Represents a piece of infrastructure or external service that a component depends on, such as a database or an S3 bucket.
 ** "All these entities, working together to perform a function, can be logically grouped into a **System**."
 
-"While Organizational Entities can be:"
+* **You**: "While Organizational Entities can be:"
 
 ** *User*: Represents an individual user within your organization.
 ** *Group*: Represents a team or other organizational units that users are members of.
@@ -44,21 +48,23 @@ image::dependency_diagram.png[]
 * **You**: "Now that we have a better grasp of the terminology, let’s examine the relationship diagram of our application. 
 
 ** The diagram shows that all components, APIs, and resources are part of the system called 'globex-system.' 
-** The component named 'globex-backend' provides an API named 'globex-api,' and has a dependency on a database called 'globex-database'. 
-** The other component named 'globex-frontend' consumes the 'globex-api'. 
-** So as you can see Homer, you can immediately identify that any modifications made to the 'globex-api' will directly impact the 'globext-frontend' component."
+** The component named `globex-backend` provides an API named `globex-api`. 
+** The other component named `globex-frontend` consumes the `globex-api`. 
+** So as you can see **Homer**, you can immediately identify that any modifications made to the `globex-api` will directly impact the `globext-frontend` component."
 
-Homer Simpson: "So, it’s like a family tree, but for computer stuff? I guess every family has its nuts!"
+---
 
 === Task 2: Auto-Discovery of Components
 
-* **Hank Scorpio*: “Manual registration just isn’t cutting it. We need to automatically import repositories already existing in our GitHub organization.”
+* **Hank Scorpio**: “Manual registration just isn’t cutting it. We need to automatically import repositories already existing in our **GitHub Organization**.”
 
-* **You**: “Absolutely, Hank. Setting up auto-discovery in **RHDH** is straightforward, and I’ll guide Homer through the steps right now.”
+* **You**: “Absolutely, **Hank**. Setting up auto-discovery in **RHDH** is straightforward, and I’ll guide **Homer** through the steps right now.”
 
 ==== Step 1: Create a Repo Under Your GitHub Organization
 
-* **You**: “To test out auto-discovery, Homer, let’s create a repository under the **GitHub Organization** you created earlier. Define a software component based on what I just showed you. Be as creative as you want."
+* **You**: “To test out auto-discovery, **Homer**, let’s create a repository under the **GitHub Organization** you created earlier. Define a software component based on what I just showed you. Be as creative as you want."
+
+NOTE: The objective here is to create a repository under your **GitHub Organization** and then define entities within a `catalog-info.yaml` file, similar to the one imported earlier. You will lose points if you simply copy the same component; try to be creative and develop your very own unique entities.  
 
 ==== Step 2: Setup GitHub Integration
 
@@ -107,35 +113,39 @@ rules:
   - allow: [Component, System, API, Template, Location, Resource, User, Group, Domain]
 ```
 
+NOTE: Pay close attention to the indentation. YAML files are very sensitive to indentation, and one wrong space can cause RHDH to fail to start.
+
 **You**: "Save the file."
 
 ==== Step 3: Update the `rhdh_secrets` Secret
 
 **You**: "Now we need to update the environment variables in our `rhdh_secrets` secret."
 
-1. **Log into the OpenShift cluster as the admin user using the `oc` CLI.**
-2. **Switch to the `rhdh` namespace where you installed RHDH.**
-3. **Create a file named `env.sh` with the following environment variables, replacing the values with the GitHub App details you created in the previous steps. Replace the `GITHUB_APP_PRIVATE_KEY_FILE` with your private key file that you downloaded from GitHub.**
+. **Log into the OpenShift cluster as the admin user using the `oc` CLI.**
+. **Switch to the `rhdh` namespace where you installed RHDH.**
+. **Create a file named `env.sh` with the following environment variables, replacing the values with the GitHub App details you created in the previous steps. Replace the `GITHUB_APP_PRIVATE_KEY_FILE` with your private key file that you downloaded from GitHub.**
 
 ```bash
 export OPENSHIFT_CLUSTER_INFO=$(oc cluster-info | head -n 1 | sed 's/^.*https/https/')
 export K8S_CLUSTER_API=$(oc cluster-info | head -n 1 | sed 's/^.*https/https/')
 export GITHUB_HOST_DOMAIN=https://github.com
-export GITHUB_ORGANIZATION='rhdh-team0'
+export GITHUB_ORGANIZATION=<Your GitHub Organization Name>
 export GITHUB_ORG_URL=$GITHUB_HOST_DOMAIN/$GITHUB_ORGANIZATION
-export GITHUB_APP_ID='960935'
-export GITHUB_APP_PRIVATE_KEY_FILE="$(< <name of private key file>.pem)"
+export GITHUB_APP_ID=<Your GitHub App ID>
+export GITHUB_APP_PRIVATE_KEY_FILE="$(< private_key_file.pem)" #Replace with the name of the pem file you downloaded earlier
 export GITHUB_APP_WEBHOOK_URL=<Your RHDH Route URL>
 export GITHUB_APP_WEBHOOK_SECRET=7opS3cr3tK3y
 ```
 
-4. **Source the `env.sh` file to export the environment variables:**
+[start=4]
+. **Source the `env.sh` file to export the environment variables:**
 
 ```bash
 source env.sh
 ```
 
-5. **Execute the following command to add keys related to GitHub authentication:**
+[start=5]
+. **Execute the following command to add keys related to GitHub authentication:**
 
 ```bash
 $ oc set data secret/rhdh-secrets -n rhdh \
@@ -143,17 +153,17 @@ $ oc set data secret/rhdh-secrets -n rhdh \
   GITHUB_ORGANIZATION=$GITHUB_ORGANIZATION \
   GITHUB_ORG_URL=$GITHUB_ORG_URL \
   GITHUB_APP_ID=$GITHUB_APP_ID \
-  GITHUB_APP_PRIVATE_KEY_FILE=$GITHUB_APP_PRIVATE_KEY_FILE \
+  GITHUB_APP_PRIVATE_KEY_FILE="$GITHUB_APP_PRIVATE_KEY_FILE" \
   GITHUB_APP_WEBHOOK_URL=$GITHUB_APP_WEBHOOK_URL \
   GITHUB_APP_WEBHOOK_SECRET=$GITHUB_APP_WEBHOOK_SECRET
 ```
 ==== Step 4: Enable the GitHub Plugins
 
-* **You**: "The final step here is to enable the GitHub and GitHub Organization discovery dynamic plugins."
+* **You**: "The final step here is to enable the **GitHub** and **GitHub Organization** discovery dynamic plugins."
 
 * **You**: "Dynamic plugins in **RHDH** are modules that can be added or removed without altering the core system. They allow us to extend functionality seamlessly, and integrate with external systems."
 
-* **You**: "You need to create a new ConfigMap named `dynamic-plugins-rhdh-local` to enable the **GitHub** related plugins. Usr the following YAML snippet:"
+* **You**: "You need to create a new ConfigMap named `dynamic-plugins-rhdh-local` to enable the **GitHub** related plugins. Usr\e the following YAML snippet:"
 
 ```yaml
 kind: ConfigMap
@@ -172,6 +182,8 @@ data:
         disabled: false
 ```
 
+* **You**: "Click the **Create** button"
+
 * **You**: "Next, edit the the **Red Hat Developer Hub (RHDH)** custom resource (CR) as you did before. Add a new attribute named `dynamicPluginsConfigMapName` under `spec.application` as follows and reference the new ConfigMap for the dynamic plugin configuration."
 
 ```yaml
@@ -183,9 +195,6 @@ spec:
         - name: app-config-rhdh
       mountPath: /opt/app-root/src
     dynamicPluginsConfigMapName: dynamic-plugins-rhdh-local
-    extraEnvs:
-      secrets:
-        - name: rhdh-secrets
 ...
 ```
 *  **You**: "Restart the RHDH pod just like you did before to see the imported components in our Catalog."

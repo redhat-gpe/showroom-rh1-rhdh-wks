@@ -7,6 +7,8 @@
 
 * **You**: “Great enthusiasm, Homer! Let’s dive into our first challenge. We need to create an OpenShift project called **rhdh** and install the RHDH operator.”
 
+---
+
 === Task 1: Creating an OpenShift Project
 
 **Globex Corp** needs a dedicated space within their **OpenShift** cluster to house the **Red Hat Developer Hub (RHDH)** and its components. 
