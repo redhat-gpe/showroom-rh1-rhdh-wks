@@ -205,12 +205,20 @@ image::angry_homer_simpson.png[]
 
 **You**: "It takes a few minutes for RHDH to scan the **GitHub Organization** and import the components into the Catalog."
 
+NOTE: You can check the logs and look for the following messages indicating a successful sync with **Github**: 
+"level":"info","message":"Reading GitHub users and groups","plugin":"catalog","service":"backstage","target":"https://github.com","taskId":"GithubMultiOrgEntityProvider:github:refresh"
+"level":"info","message":"Reading GitHub users and teams for org: <your org name>>","plugin":"catalog","service":"backstage","target":"https://github.com","taskId":"GithubMultiOrgEntityProvider:github:refresh",
+"level":"info","message":"Read N GitHub users and N GitHub groups in 0.6 seconds. 
+"level":"info","message":"Committed 1 GitHub users and 1 GitHub groups in 0.0 seconds.","plugin":"catalog","service":"backstage",
+"level":"info","message":"Read N GitHub repositories (N matching the pattern)","plugin":"catalog","service":"backstage","target":"github-provider:providerId","taskId":"github-provider:providerId:refresh"
+If you can not find these messages in the logs, then look for errors and fix the configuration and redeploy.
+
 * *After a few minutes...*
 
 * **You**: "Let's check the Catalog now."
 
 * **You**: "Look, **Homer**! The new components have been successfully imported into the catalog. And also if you filter by users, you will find that the users you invited to your **GitHub Organization** have been also imported into the Catalog. It's all set up now."
 
-Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 3, please review." 
+* Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 3, please review." 
 
 

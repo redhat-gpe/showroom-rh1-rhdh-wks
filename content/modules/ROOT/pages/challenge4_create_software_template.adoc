@@ -69,6 +69,8 @@ spec:
 
 * **You**: "Finally, the *Output* section, though optional, allows you to display results to the user or use the output from executing actions. In our *Hello World* template, we are simply displaying the input that the user provided. It's a straightforward way to provide immediate feedback about what was entered and processed."
 
+---
+
 === Task 1: Modify Hello World Template
 
 **You**: "Now that we've got a basic template up and running, let's make make a few modifications. Your challenge is to modify the template based on the following requirements:"
@@ -89,8 +91,9 @@ TIP: Refer to this link to see examples of UI options including the OwnerPicker.
 
 TIP: Here are some input examples for inspiration: https://backstage.io/docs/features/software-templates/input-examples/
 
+---
 
-=== Task 1: Create your own template
+=== Task 2: Create your own template
 
 * **You**: "Now apply what you've learned to craft a **Software Template** that creates and registers a new component in the RHDH Catalog. The template designed to facilitate the rapid setup of Single Page Applications (SPAs) using React and Next.js."
 * **You**: "Here are the four sections of this template, but some of them are incomplete. Your challenge is to fill in these incomplete parts, drawing upon your learning  today."
@@ -169,8 +172,10 @@ spec:
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}
 ```
+* **You**: "Create a new repository under your organization. Then, create a file called template.yaml in the new repository and register the template in your catalog. The process is identical to the one we used previously to import a component into the Catalog."
 
+* **You**: "Choose the newly created template and run it."
 
-Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 4 please review."
+* Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 4 please review."
 
 
