@@ -16,9 +16,17 @@ image::globex-corp.png[]
 
 The Hackathon is broken down into challenges:
 
-* **Challenge 1**: Install the Red Hat Developer Hub.
-* **Challenge 2**: Setup Authentication.
-* **Challenge 3**: Populating the Catalog.
-* **Challenge 4**: Creating your First Software Template.
-* **Challenge 5**: Setup Role Base Access Control.
+* **Challenge 1**: Install the Red Hat Developer Hub. (10 points)
+* **Challenge 2**: Setup Authentication. (20 Points)
+* **Challenge 3**: Populating the Catalog. (30 Points)
+* **Challenge 4**: Creating your First Software Template. (40 Points)
+* **Challenge 5**: Setup Role Base Access Control. (Bonus)
+
+=== Prerequisites 
+
+To complete the challenges, you will need:
+
+. A **GitHub** account - Ensure you have an account on GitHub. If you don't have one yet, you can sign up at link:https://github.com[Github].
+. The `oc` client installed on your laptop - This is the command line tool for interacting with OpenShift. You can download and install it from the OpenShift Console under your user menu at the top right corner, or follow the steps in the documentation: link:https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI Tools page].
+
 

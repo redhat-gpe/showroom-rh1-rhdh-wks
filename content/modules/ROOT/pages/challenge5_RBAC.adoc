@@ -5,7 +5,7 @@
 
 * **You**: "That's a great point, Hank. While authentication providers confirm the identity of the user, authorization—determining what actions an authenticated identity can perform. Authentication in **RHDH** is handled by a  component called Role-Based Access Control (RBAC) using Permission Policies."
 
-* **You**: "Alright JHomer, let’s set up Role-Based Access Control."
+* **You**: "Alright Homer, let’s set up Role-Based Access Control."
 
 **Homer Simpson**: "If we’re picking roles, can I be the ‘Master of Munchies’? Ensuring quality snacks is critical for developer productivity, you know."
 

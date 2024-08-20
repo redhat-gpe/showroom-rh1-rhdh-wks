@@ -13,7 +13,7 @@
 
 * **You**: "The first step is to create a new **GitHub Organization** and name it **<your_team_name>-org**. Then invite members of the PoC team to join **GitHub Organization**."
 
-NOTE: There should be at least two members in the organization.
+NOTE: Only one member of your team needs to create the GitHub Organization. The Organization Owner is responsible for creating the GitHub Application and inviting team members to the Organization. There should be at least two members in the Organization.
 
 image::org_team_example.png[]
 
@@ -39,16 +39,17 @@ image::org_team_example.png[]
 
 * "Under Organization permissions, ensure that you toggle Read-only permissions for Members so that RHDH can import team and user information from GitHub.”
 
-* “Click 'Create GitHub App'. You will be shown your App ID and a client ID. Make note of these values for the next step.”
+* “Click **Create GitHub App**. You will be shown your App ID and a client ID. Make note of these values for the next step.”
 
-* “Click 'Generate a new client secret'. Copy the generated secret for the next steps.”
+* “Click **Generate a new client secret**. Copy the generated secret for the next steps.”
 
-* “Scroll down to the Private Keys section and click 'Generate a private key'. The private key will be downloaded. Copy the generated private key certificate (it is in PEM format) to a safe location.”
+* “Scroll down to the Private Keys section and click **Generate a private key**. The private key will be downloaded. Copy the generated private key certificate (it is in PEM format) to a safe location.”
 
-* “In the left sidebar menu of the generated app, select 'Install App', and then click 'Install'. Click 'Install' on the next screen as well.”
+* “In the left sidebar menu of the generated app, select **Install App**, and then click **Install**. Click **Install** on the next screen as well.”
 
 **TIP**: Lost? Follow the instructions in this guide: link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.1/html/getting_started_with_red_hat_developer_hub/assembly-auth-provider-github#proc-registering-github-app[Setting Up GitHub as Authentication Provider,window=_blank]
 
+---
 
 === Task 2: Configure RHDH to Use the GitHub App for Authentication
 
@@ -58,7 +59,7 @@ image::org_team_example.png[]
 
 image::homer_doh.png[]
 
-**You**: "Good one, Homer! But not exactly, **ConfigMaps** in **OpenShift** are used to store configuration data in key-value pairs. This data can be consumed by pods within the cluster. They are particularly useful for separating configuration from the application code, which makes managing and updating configurations much simpler and more efficient."
+**You**: "Good one, **Homer**! But not exactly, **ConfigMaps** in **OpenShift** are used to store configuration data in key-value pairs. This data can be consumed by pods within the cluster. They are particularly useful for separating configuration from the application code, which makes managing and updating configurations much simpler and more efficient."
 
 ==== Step 1: Create a Custom Configuration File for RHDH
 
@@ -107,21 +108,20 @@ data:
    signInPage: github
 ----
 
-"Where it says `<your RHDH route>` replace with your **Red Hat Developer Hub** route."
+* **You**: "Where it says `<your RHDH route>`, replace it with your **Red Hat Developer Hub** route. You will need to make this replacement in three places. After making these changes, click the **Create** button."
 
 ==== Step 2: Create the Backend Secret
 
-"Homer Simpson: What's this `${BACKEND_SECRET}`? Is it a secret agent code?"
+**Homer**: "What's this `${BACKEND_SECRET}`? Is it a secret agent code?"
 
-"You: Good catch, **Homer**. **Secrets** are used instead of plain text in **ConfigMaps** to enhance security. This is where we will store our Backend secret and **GitHub** credentials. Create a key/value secret named `rhdh-secrets`."
+* **You**: "Good catch, **Homer**. **Secrets** are used instead of plain text in **ConfigMaps** to enhance security. This is where we will store our Backend secret and **GitHub** credentials. Create a key/value secret named `rhdh-secrets`."
 
-"Enter `BACKEND_SECRET` in the Key field, while for the Value field open a new command line terminal and generate a base64 encoded string using the following command:
-[source,bash]
-----
-$ node -p 'require("crypto").randomBytes(24).toString("base64")'
-----
+* **You**: "Enter `BACKEND_SECRET` in the Key field and `PwOD9zUumzQzLESkwWmYpLlQo1+H/qaQ` for the Value field.
 
-"Copy the randomly generated string to the Value field, and then click **Add Key/Value** to add two more Key/Value pairs as follows:
+NOTE: You can generate your backend secret using the following command `node -p 'require("crypto").randomBytes(24).toString("base64")'`. However, you will need to have Node installed on your local laptop to execute this.
+
+* **You**: "Click **Add Key/Value** to add two more Key/Value pairs as follows:
+
 [cols="1,1"]
 |===
 |**Key**
@@ -134,11 +134,13 @@ $ node -p 'require("crypto").randomBytes(24).toString("base64")'
 |<The GitHub APP Client Secret you copied earlier>
 |===
 
+* **You**: "Click the **Create** button.""
+
 === Step 3: Reference the Custom Configuration File in RHDH
 
 * **Homer**: "All this just to log in? Can't we just knock on the door and ask nicely?"
 
-* **You**: "I wish it were that simple, **Homer**. Now that you have created your own custom configuration files, you need to reference it in the **Red Hat Developer Hub (RHDH)** custom resource (CR). Click on **Topology** in the left sidebar, and then expand the hamburger menu (three vertical dots) next to the `rhdh` instance to select the 'Edit Backstage' option."
+* **You**: "I wish it were that simple, **Homer**. Now that you have created your own custom configuration files, you need to reference it in the **Red Hat Developer Hub (RHDH)** custom resource (CR). If you’re not already in the **Developer** perspective, switch to it.  Click on **Topology** in the left sidebar, and then expand the hamburger menu (three vertical dots) next to the `rhdh` instance to select the 'Edit Backstage' option."
 
 * **You**: "Add a reference to the `app-config-rhdh` ConfigMap and the `rhdh-secrets` secret in the **spec** section:"
 [source,yaml]
@@ -165,12 +167,24 @@ spec:
     enableLocalDb: true
 ----
 
-**You**: "Click 'Save' to save your changes. Now, you need to restart the **RHDH** pod for the changes to take effect. In the **Topology** view, expand the menu next to the `backstage-rhdh` pod and click **Restart rollout** to restart the **RHDH** pod."
+* **You**: "Click **Save** to save your changes. Now, you need to restart the **RHDH** pod for the changes to take effect. In the **Topology** view, expand the menu next to the `backstage-rhdh` pod and click **Restart rollout** to restart the **RHDH** pod."
 
-**You**: "After the pod restarts, navigate to the **RHDH** URL. This time, the **Authentication** page will only display **GitHub** as an option for authentication. Go ahead and click **Sign in**. You should now see the **Homepage** for the **Red Hat Developer Hub**. "
+* **You**: "Restarting the **backstage-rhdh** pod takes a few minutes. It first reloads the list of **dynamic plugins** before the actual **RHDH** instance starts. You can track this activity by clicking on the **backstage-rhdh** pod and then selecting **View logs** from the right pane."
+
+image::rhdh_rollout_view_logs.png[]
+
+** *You**: "Then in the **Logs** view, select the **install-dynamic-plugins** init container  first to view the plugins being installed. Once this is complete, you can switch to the **backstage-backend** container to monitor it as it starts up."
+
+image::monitor_rhdh_startup.png[]
+
+* **You**: "After the pod restarts, navigate to the **RHDH** URL. This time, the **Authentication** page will only display **GitHub** as an option for authentication." 
 
 image::rhdh_github_authentication.png[]
 
-Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 2, please review."
+* **You**: "Go ahead and click **Sign in**. You will be asked to authorize your new application to access your **Github** details. Once you do so, you should now see the **Homepage** for the **Red Hat Developer Hub**. "
+
+image::rhdh_homepage.png[]
+
+* Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 2, please review."
 '''
 

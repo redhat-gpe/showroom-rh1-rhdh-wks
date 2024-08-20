@@ -30,6 +30,8 @@ image::openshift_login.png[]
 
 TIP: In case you are lost, check the link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.15/html/building_applications/projects#working-with-projects[OpenShift documentation,window=_blank] on how to create a new project. You can refer to section 2.1.1.1, “Creating a project by using the web console”.
 
+---
+
 === Task 2: Deploying the Red Hat Developer Hub Operator
 
 * **You**: "Now that you have the project in place, it's time to deploy the **Red Hat Developer Hub Operator**."
@@ -37,6 +39,8 @@ TIP: In case you are lost, check the link:https://docs.redhat.com/en/documentati
 * **You**: “The **Red Hat Developer Hub Operator** manages the lifecycle of our **RHDH** components. You’ll need to navigate to the **OperatorHub** in the **OpenShift** web console, and install **Red Hat Developer Hub Operator**.”
 
 TIP: If you get stuck, Refer to the documentation, link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html-single/installing_red_hat_developer_hub_on_openshift_container_platform/index#proc-install-operator_assembly-install-rhdh-ocp-operator[“1.1.1. Installing the Red Hat Developer Hub Operator”,window=_blank].
+
+---
 
 === Task 3: Deploy Red Hat Developer Hub using the Operator
 
@@ -57,6 +61,6 @@ image::rhdh_authentication.png[]
 * **You**: "You'll see two options on the authentication page: one is to use **GitHub** and the other is to use a **Guest** account."
 * **You**: "The Guest account is is highly not desired by **Globex Corp** as they want only authorized users to access the **Red Hat Developer Hub**. In the next challenge, we will remove the **Guest** account option and configure authentication and integration with **Github**."
 
-Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 1, please review."
+* Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 1, please review."
 
 '''
