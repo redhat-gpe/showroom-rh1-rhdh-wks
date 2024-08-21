@@ -60,4 +60,4 @@ data:
 
 TIP: You can refer to the RHDH documentation to read more about RBAC in Section 10.3. Managing role-based access controls (RBAC) using the Red Hat Developer Hub Web UI: https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html-single/administration_guide_for_red_hat_developer_hub/index#proc-rbac-ui-manage-roles_assembly-rhdh-integration-aks. 
 
-Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 5 please review." 
+* Once done, let the moderators know by sharing this message on the slack channel: "<Your Team Name> completed challenge 5 please review." 
