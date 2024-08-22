@@ -26,4 +26,6 @@ To complete the challenges, you will need:
 
 . A **GitHub** account - Ensure you have an account on GitHub. If you don't have one yet, you can sign up at link:https://github.com[Github].
 . The `oc` client installed on your laptop - This is the command line tool for interacting with OpenShift. You can download and install it from the OpenShift Console under your user menu at the top right corner, or follow the steps in the documentation: link:https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI Tools page].
+. You will also need to use a Chrome Browser.
+
 

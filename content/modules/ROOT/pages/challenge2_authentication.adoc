@@ -15,7 +15,7 @@
 
 * **You**: "The first step is to create a new **GitHub Organization** and name it **<your_team_name>-org**. Then invite members of the PoC team to join **GitHub Organization**."
 
-NOTE: Only one member of your team needs to create the GitHub Organization. The Organization Owner is responsible for creating the GitHub Application and inviting team members to the Organization. There should be at least two members in the Organization.
+NOTE: Only one member of your team needs to create the GitHub Organization. The Organization Owner is responsible for creating the GitHub Application and inviting team members to the Organization. Team members have to accept the invitation from their respective Github accounts. There should be at least two members in the Organization.
 
 image::org_team_example.png[]
 

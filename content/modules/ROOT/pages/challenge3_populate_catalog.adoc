@@ -84,6 +84,8 @@ integrations:
             ${GITHUB_APP_PRIVATE_KEY_FILE}
 catalog:
   providers:
+    rules:
+      - allow: [Component, System, API, Template, Location, Resource, User, Group, Domain]
     github:
       providerId: 
         organization: "${GITHUB_ORGANIZATION}"
@@ -109,8 +111,6 @@ catalog:
             seconds: 15
           timeout:
             minutes: 15
-rules:
-  - allow: [Component, System, API, Template, Location, Resource, User, Group, Domain]
 ```
 
 NOTE: Pay close attention to the indentation. YAML files are very sensitive to indentation, and one wrong space can cause RHDH to fail to start.
@@ -205,7 +205,7 @@ image::angry_homer_simpson.png[]
 
 * **You**: "It takes a few minutes for RHDH to scan the **GitHub Organization** and import the components into the Catalog."
 
-* **You**: "You can check the logs and look for the following messages indicating a successful sync with **Github**:"
+* **You**: "You can check the logs in the `backstage-backend` pod and look for the following messages indicating a successful sync with **Github**:"
 
 . "level":"info","message":"Reading GitHub users and groups","plugin":"catalog","service":"backstage" ...
 . "level":"info","message":"Read N GitHub repositories (N matching the pattern)","plugin":"catalog","service":"backstage" ...
