@@ -100,7 +100,7 @@ image::RHDH_Dashboard.png[]
 
 . Choose to *login with OpenShift*
 . Select *login with rhsso*
-. Then enter your OpenShift credentials with user `user1` and password `{common_password}`
+. Then enter your OpenShift credentials with user `{devspaces_user}` and password `{devspaces_user_password}`
 . Authorize *OpenShift Dev Spaces* to access your account by clicking the *Allow selected permissions* button.
 . You'll then be prompted to sign into *GitLab*. Click the *Sign in* button to proceed.
 . Finally, authorize *OpenShift Dev Spaces* to use your *GitLab* account by clicking the *Authorize* button.
